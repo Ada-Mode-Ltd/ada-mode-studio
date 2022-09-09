@@ -19,7 +19,7 @@ export default {
     fields: [
         {
             name: 'publishTo',
-            title: 'publishTo',
+            title: 'Publish to',
             type: 'string',
             initialValue: 'am',
             options: {

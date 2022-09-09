@@ -5,15 +5,20 @@ import createSchema from 'part:@sanity/base/schema-creator'
 import schemaTypes from 'all:part:@sanity/base/schema-type'
 
 // We import object and document schemas
-import blockContent from './base/blockContent'
-import blogPostCategory from './category'
+// Pages type schemas
 import post from './documents/post'
 import ctaPage from './documents/ctaPage'
 import job from './documents/job'
 import generalPage from './documents/page'
+// Component schemas
+import quote from './documents/quote'
+// Other content schemas
+import blogPostCategory from './category'
+import partner from './documents/partner'
 
 // Objects
 import formField from './objects/formField'
+import blockContent from './base/blockContent'
 // import parentPost from './parentPost'
 // import childPost from './childPost'
 import author from './author'
@@ -37,18 +42,25 @@ export default createSchema({
     // The following are document types which will appear
     // in the studio.
     author,
-    blogPostCategory,
     childSettings,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     blockContent,
     formField,
-
+    
     // Documents
     post,
     ctaPage,
     job,
     generalPage,
+    
+    // Components
+    quote,
+    
+    // Other content
+    partner,
+    blogPostCategory,
+    
     // ...amSchema,
     // ...wsSchema,
   ]),

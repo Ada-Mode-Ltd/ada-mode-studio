@@ -82,8 +82,8 @@ export default {
             type: 'string',
             options: {
               list: [
-                {title: 'Top', value: 'top'},
-                {title: 'Bottom', value: 'bottom'},
+                {title: 'Before content', value: 'top'},
+                {title: 'After content', value: 'bottom'},
               ],
               layout: 'radio',
             },

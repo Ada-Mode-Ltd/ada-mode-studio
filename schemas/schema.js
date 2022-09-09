@@ -20,6 +20,7 @@ import partner from './documents/partner'
 // Objects
 import formField from './objects/formField'
 import blockContent from './base/blockContent'
+import ctaSection from './objects/ctaSection'
 // import parentPost from './parentPost'
 // import childPost from './childPost'
 import author from './author'
@@ -58,6 +59,7 @@ export default createSchema({
     // Components
     quote,
     person,
+    ctaSection,
     
     // Other content
     partner,

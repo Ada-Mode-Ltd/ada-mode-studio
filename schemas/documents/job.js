@@ -76,6 +76,20 @@ export default {
             type: 'blockContent',
             group: 'content',
           },
+          {
+            name: 'positionAbout',
+            title: 'Position of "About us" text',
+            type: 'string',
+            options: {
+              list: [
+                {title: 'Top', value: 'top'},
+                {title: 'Bottom', value: 'bottom'},
+              ],
+              layout: 'radio',
+            },
+            initialValue: 'top',
+            group: 'content',
+          },
     ],
     preview: {
         select: {

@@ -1,5 +1,6 @@
 // /deskStructure.js
 import S from '@sanity/desk-tool/structure-builder'
+import { windscope, adaMode  } from './utils/logos';
 
 const hiddenFromBase = S.documentTypeListItems().filter(item => item.getId().startsWith('am') || item.getId().startsWith('ws')).map(item => item.getId())
 
@@ -40,6 +41,7 @@ S.list()
   .items([
     S.listItem()
     .title('Ada Mode')
+    .icon(adaMode)
     .child(
       S.list()
       .title('Content')
@@ -55,6 +57,7 @@ S.list()
     ),
     S.listItem()
     .title('Windscope')
+    .icon(windscope)
     .child(
       S.list()
       .title('Content')

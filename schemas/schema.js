@@ -10,6 +10,7 @@ import category from './category'
 import post from './documents/post'
 import ctaPage from './documents/ctaPage'
 import job from './documents/job'
+import generalPage from './documents/generalPage'
 
 // Objects
 import formField from './objects/formField'
@@ -42,11 +43,12 @@ export default createSchema({
     // { type: 'typename' } in other document schemas
     blockContent,
     formField,
-    
+
     // Documents
     post,
     ctaPage,
     job,
+    generalPage,
     // ...amSchema,
     // ...wsSchema,
   ]),

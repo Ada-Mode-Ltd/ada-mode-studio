@@ -1,7 +1,7 @@
 // /deskStructure.js
 import S from '@sanity/desk-tool/structure-builder'
 import { windscope, adaMode  } from './utils/logos';
-import { keyboard, partner, note, briefcase, quote, click, write } from './utils/icons';
+import { keyboard, partner, note, briefcase, quote, click, write, person, team } from './utils/icons';
 
 const hiddenFromBase = S.documentTypeListItems().filter(item => item.getId().startsWith('am') || item.getId().startsWith('ws')).map(item => item.getId())
 
@@ -28,6 +28,10 @@ const returnIcon = (schemaType) => {
 
   if (schemaType === 'generalPage') {
     return note;
+  }
+  
+  if (schemaType === 'person') {
+    return person;
   }
   
   return
@@ -83,6 +87,8 @@ S.list()
         S.divider(),
         siteSpecificSchema('Partners', 'am', 'partner', 'publishTo'),
         siteSpecificSchema('Quotes', 'am', 'quote', 'publishTo'),
+        S.divider(),
+        siteSpecificSchema('People', 'am', 'person', 'publishto')
         // S.documentTypeListItems().filter(
         //     item => item.getSchemaType().name.startsWith('am-')
         //   )
@@ -102,6 +108,8 @@ S.list()
         S.divider(),
         siteSpecificSchema('Partners', 'ws', 'partner', 'publishTo'),
         siteSpecificSchema('Quotes', 'ws', 'quote', 'publishTo'),
+        S.divider(),
+        siteSpecificSchema('People', 'ws', 'person', 'publishto')
         // S.documentTypeListItems().filter(
         //     item => item.getSchemaType().name.startsWith('ws-')
         //   )  
@@ -162,7 +170,29 @@ S.list()
         )
       )
     ])),
+    S.divider(),
+    S.listItem()
+    .title('People')
+    .icon(person)
+    .child(
+      S.list()
+       .title('Cross-company team')
+       .items([
+      S.listItem()
+      .title('All people')
+      .icon(team)
+      .child(
+        S.documentTypeList('person')
+        // .title(``) 
+        .filter('_type == "people"')
+        .child(documentId =>
+          S.document()
+          .documentId(documentId)
+          .schemaType('person')
+        )
+      )
+    ])),
 
     // The rest of this document is from the original manual grouping in this series of articles
-    ...S.documentTypeListItems().filter(listItem => ![hiddenFromBase, 'parentStaff', 'blogPostCategory', 'ctaPage', 'job', 'generalPage', 'post', 'partner', 'quote'].includes(listItem.getId())),
+    ...S.documentTypeListItems().filter(listItem => ![hiddenFromBase, 'parentStaff', 'blogPostCategory', 'ctaPage', 'job', 'generalPage', 'post', 'partner', 'quote', 'person'].includes(listItem.getId())),
   ])

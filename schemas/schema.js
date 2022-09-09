@@ -12,6 +12,7 @@ import job from './documents/job'
 import generalPage from './documents/page'
 // Component schemas
 import quote from './documents/quote'
+import person from './documents/person'
 // Other content schemas
 import blogPostCategory from './category'
 import partner from './documents/partner'
@@ -56,6 +57,7 @@ export default createSchema({
     
     // Components
     quote,
+    person,
     
     // Other content
     partner,

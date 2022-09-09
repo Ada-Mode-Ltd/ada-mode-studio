@@ -1,4 +1,4 @@
-import { slugify } from "../schemaUtils"
+import { slugify } from "../../utils/schema"
 
 export default {
     name: 'job',

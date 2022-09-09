@@ -1,4 +1,4 @@
-
+import { slugify } from "../schemaUtils"
 
 export default {
   name: 'post',
@@ -48,17 +48,7 @@ export default {
       options: {
         source: 'title',
         maxLength: 96,
-        slugify: input => {
-          input = input
-            .toLowerCase()
-            .replace(/[*+~.,()'"!:@?\s]+/g, '-')
-            .slice(0, 96)
-          if (input.substr(-1) == "-") {
-            input = input.slice(0, -1)
-          }
-
-          return (`${input}`).toLowerCase()
-        }
+        slugify: slugify,
       },
     },
     {

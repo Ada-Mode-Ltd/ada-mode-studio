@@ -110,8 +110,8 @@ export default {
                             type: 'string',
                         },
                         {
-                            name: 'value',
-                            title: 'Value',
+                            name: 'values',
+                            title: 'Values',
                             type: 'array',
                             of: [ {type: 'string'} ],
                             hidden: ({parent}) => parent.type !== 'dropdown',

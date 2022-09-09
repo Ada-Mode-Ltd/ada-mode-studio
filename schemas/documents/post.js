@@ -63,7 +63,8 @@ export default {
       title: 'Categories',
       type: 'array',
       group: 'metadata',
-      of: [{type: 'reference', to: {type: 'category'}}],
+      of: [{type: 'reference', to: {type: 'blogPostCategory'}}],
+      // TODO: Add some filtering here so that categories for the specific site can only be referenced.
     },
     {
       name: 'publishTo',

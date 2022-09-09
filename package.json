@@ -24,6 +24,7 @@
     "prop-types": "^15.7",
     "react": "^17.0",
     "react-dom": "^17.0",
+    "sanity-plugin-visual-options": "^0.8.4",
     "styled-components": "^5.3.5"
   }
 }

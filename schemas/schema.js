@@ -10,6 +10,9 @@ import category from './category'
 import post from './documents/post'
 import ctaPage from './documents/ctaPage'
 import job from './documents/job'
+
+// Objects
+import formField from './objects/formField'
 // import parentPost from './parentPost'
 // import childPost from './childPost'
 import author from './author'
@@ -38,6 +41,8 @@ export default createSchema({
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     blockContent,
+    formField,
+    
     // Documents
     post,
     ctaPage,

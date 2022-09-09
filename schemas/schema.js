@@ -9,6 +9,7 @@ import blockContent from './base/blockContent'
 import category from './category'
 import post from './documents/post'
 import ctaPage from './documents/ctaPage'
+import job from './documents/job'
 // import parentPost from './parentPost'
 // import childPost from './childPost'
 import author from './author'
@@ -40,6 +41,7 @@ export default createSchema({
     // Documents
     post,
     ctaPage,
+    job,
     // ...amSchema,
     // ...wsSchema,
   ]),

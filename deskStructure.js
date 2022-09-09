@@ -43,7 +43,8 @@ export default () =>
             .id('am')
             .items([
               siteSpecificSchema('Posts', 'am', 'post', 'publishTo'),
-                // S.documentTypeListItems().filter(
+              siteSpecificSchema('Job listings', 'am', 'job', 'publishTo'),
+              // S.documentTypeListItems().filter(
                 //     item => item.getSchemaType().name.startsWith('am-')
                 //   )
             ])
@@ -66,5 +67,5 @@ export default () =>
       S.divider(),
       
       // The rest of this document is from the original manual grouping in this series of articles
-      ...S.documentTypeListItems().filter(listItem => ![ hiddenFromBase, 'parentStaff', 'category', 'ctaPage' ].includes(listItem.getId())),
+      ...S.documentTypeListItems().filter(listItem => ![ hiddenFromBase, 'parentStaff', 'category', 'ctaPage', 'job' ].includes(listItem.getId())),
     ])

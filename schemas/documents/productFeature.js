@@ -168,13 +168,20 @@ export default {
     ],
     preview: {
         select: {
-          title: 'title',
-          product: 'product.name',
+          type: 'featureType',
+          titleL: 'longTitle',
+          titleM: 'mediumTitle',
+          titleS: 'smallTitle',
+          mediaL: 'largeImage',
+          mediaM: 'mediumImage',
+          mediaS: 'smallImage',
         },
         prepare(selection) {
-          const {product} = selection
+          const {type, titleL, titleM, titleS, mediaL, mediaM, mediaS} = selection
           return Object.assign({}, selection,  {
-            subtitle: product && `for ${product}`,
+            title: type === 'large' ? titleL : type === 'medium' ? titleM : titleS,
+            subtitle: `Display type: ${type}`,
+            media: type === 'large' ? mediaL : type === 'medium' ? mediaM : mediaS,
           })
         },
       },

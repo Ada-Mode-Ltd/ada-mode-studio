@@ -1,7 +1,7 @@
 // /deskStructure.js
 import S from '@sanity/desk-tool/structure-builder'
 import { windscope, adaMode  } from './utils/logos';
-import { keyboard, partner, note, briefcase, quote, click, write, person, team, industry, confetti } from './utils/icons';
+import { keyboard, partner, note, briefcase, quote, click, write, person, team, industry, confetti, productTM } from './utils/icons';
 
 const hiddenFromBase = S.documentTypeListItems().filter(item => item.getId().startsWith('am') || item.getId().startsWith('ws')).map(item => item.getId())
 
@@ -209,24 +209,31 @@ S.list()
     .title('People')
     .icon(person)
     .child(
-      S.list()
-       .title('Cross-company team')
-       .items([
-      S.listItem()
-      .title('All people')
-      .icon(team)
-      .child(
-        S.documentTypeList('person')
+      S.documentTypeList('person')
+      // .title(``) 
+      .filter('_type == "people"')
+      .child(documentId =>
+        S.document()
+        .documentId(documentId)
+        .schemaType('person')
+      )
+      ),
+    S.listItem()
+    .title('Products')
+    .icon(productTM)
+    .child(
+      
+        S.documentTypeList('product')
         // .title(``) 
-        .filter('_type == "people"')
+        .filter('_type == "product"')
         .child(documentId =>
           S.document()
           .documentId(documentId)
-          .schemaType('person')
+          .schemaType('product')
         )
-      )
-    ])),
+      
+    ),
 
     // The rest of this document is from the original manual grouping in this series of articles
-    ...S.documentTypeListItems().filter(listItem => ![hiddenFromBase, 'industry', 'productFeature', 'parentStaff', 'blogPostCategory', 'ctaPage', 'job', 'generalPage', 'post', 'partner', 'quote', 'person'].includes(listItem.getId())),
+    ...S.documentTypeListItems().filter(listItem => ![hiddenFromBase, 'industry', 'product', 'productFeature', 'parentStaff', 'blogPostCategory', 'ctaPage', 'job', 'generalPage', 'post', 'partner', 'quote', 'person'].includes(listItem.getId())),
   ])

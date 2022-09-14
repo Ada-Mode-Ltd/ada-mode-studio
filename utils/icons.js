@@ -138,6 +138,16 @@ export const confetti = () => (<svg xmlns="http://www.w3.org/2000/svg" class="ic
   <path d="M14 16.518l-6.518 -6.518l-4.39 9.58a1.003 1.003 0 0 0 1.329 1.329l9.579 -4.39z" />
 </svg>)
 
+export const industry = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-building-factory" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 21c1.147 -4.02 1.983 -8.027 2 -12h6c.017 3.973 .853 7.98 2 12" />
+  <path d="M12.5 13h4.5c.025 2.612 .894 5.296 2 8" />
+  <path d="M9 5a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1" />
+  <line x1="3" y1="21" x2="22" y2="21" />
+</svg>
+)
+
 // For CTA Section
 export const OIText = () => <svg viewBox="0 0 793 528" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="1.5"><g stroke="darkslategrey"><path fill="#fff" strokeWidth="25" d="M12.534 12.991h767.933v502.017H12.534z"/><path d="M117.542 125.78s562.598-1.433 560.772-1.765M117.542 216.456s562.598-1.433 560.772-1.765M117.542 307.474s562.598-1.433 560.772-1.766M117.542 398.809s562.598-1.433 560.772-1.766" fill="none" strokeWidth="20"/></g></svg>
 

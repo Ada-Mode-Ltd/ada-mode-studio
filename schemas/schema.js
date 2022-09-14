@@ -18,6 +18,7 @@ import blogPostCategory from './category'
 import partner from './documents/partner'
 import product from './documents/product'
 import productFeature from './documents/productFeature'
+import industry from './documents/industry'
 
 // Objects
 import formField from './objects/formField'
@@ -70,6 +71,7 @@ export default createSchema({
     blogPostCategory,
     product,
     productFeature,
+    industry,
     
     // ...amSchema,
     // ...wsSchema,

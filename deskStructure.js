@@ -1,7 +1,7 @@
 // /deskStructure.js
 import S from '@sanity/desk-tool/structure-builder'
 import { windscope, adaMode  } from './utils/logos';
-import { keyboard, partner, note, briefcase, quote, click, write, person, team } from './utils/icons';
+import { keyboard, partner, note, briefcase, quote, click, write, person, team, industry, confetti } from './utils/icons';
 
 const hiddenFromBase = S.documentTypeListItems().filter(item => item.getId().startsWith('am') || item.getId().startsWith('ws')).map(item => item.getId())
 
@@ -33,6 +33,14 @@ const returnIcon = (schemaType) => {
   if (schemaType === 'person') {
     return person;
   }
+
+  if (schemaType === 'productFeature') {
+    return confetti;
+  }
+
+  if (schemaType === 'industry') {
+    return industry;
+  }
   
   return
 }
@@ -55,7 +63,30 @@ const siteSpecificSchema = (title, site, schemaType, validationField) => {
     .child(
       S.documentTypeList(schemaType)
       .title(`${company} ${title}`)
-      .filter('_type == $type && $site in publishTo')
+      .filter(`_type == $type && $site in ${validationField}`)
+      .params({
+        type: schemaType,
+        site
+      })
+      .child(documentId =>
+        S.document()
+        .documentId(documentId)
+        .schemaType(schemaType)
+      )
+    )
+}
+
+// Filters schema documents based on a reference field
+const siteSpecificSchemaRef = (title, site, schemaType, refSchema, validationField) => {
+  const company = site === 'ws' ? 'Windscope' : 'Ada Mode';
+
+  return S.listItem()
+    .title(title)
+    .icon(returnIcon(schemaType))
+    .child(
+      S.documentTypeList(schemaType)
+      .title(`${company} ${title}`)
+      .filter(`_type == $type && $site in ${refSchema}->${validationField}`)
       .params({
         type: schemaType,
         site
@@ -88,28 +119,31 @@ S.list()
         siteSpecificSchema('Partners', 'am', 'partner', 'publishTo'),
         siteSpecificSchema('Quotes', 'am', 'quote', 'publishTo'),
         S.divider(),
-        siteSpecificSchema('People', 'am', 'person', 'publishto')
+        siteSpecificSchemaRef('Product features', 'am', 'productFeature', 'product', 'publishTo'),
+        siteSpecificSchema('People', 'am', 'person', 'publishTo'),
+        siteSpecificSchema('Industries', 'am', 'industry', 'publishTo')
         // S.documentTypeListItems().filter(
-        //     item => item.getSchemaType().name.startsWith('am-')
-        //   )
-      ])
-    ),
-    S.listItem()
-    .title('Windscope')
-    .icon(windscope)
-    .child(
-      S.list()
-      .title('Content')
-      .id('ws')
-      .items([
-        siteSpecificSchema('Posts', 'ws', 'post', 'publishTo'),
-        siteSpecificSchema('CTA pages', 'ws', 'ctaPage', 'publishTo'),
-        siteSpecificSchema('General page', 'ws', 'generalPage', 'publishTo'),
-        S.divider(),
-        siteSpecificSchema('Partners', 'ws', 'partner', 'publishTo'),
-        siteSpecificSchema('Quotes', 'ws', 'quote', 'publishTo'),
-        S.divider(),
-        siteSpecificSchema('People', 'ws', 'person', 'publishto')
+          //     item => item.getSchemaType().name.startsWith('am-')
+          //   )
+        ])
+        ),
+        S.listItem()
+        .title('Windscope')
+        .icon(windscope)
+        .child(
+          S.list()
+          .title('Content')
+          .id('ws')
+          .items([
+            siteSpecificSchema('Posts', 'ws', 'post', 'publishTo'),
+            siteSpecificSchema('CTA pages', 'ws', 'ctaPage', 'publishTo'),
+            siteSpecificSchema('General page', 'ws', 'generalPage', 'publishTo'),
+            S.divider(),
+            siteSpecificSchema('Partners', 'ws', 'partner', 'publishTo'),
+            siteSpecificSchema('Quotes', 'ws', 'quote', 'publishTo'),
+            S.divider(),
+            siteSpecificSchemaRef('Product features', 'ws', 'productFeature', 'product', 'publishTo'),
+            siteSpecificSchema('People', 'ws', 'person', 'publishTo')
         // S.documentTypeListItems().filter(
         //     item => item.getSchemaType().name.startsWith('ws-')
         //   )  
@@ -194,5 +228,5 @@ S.list()
     ])),
 
     // The rest of this document is from the original manual grouping in this series of articles
-    ...S.documentTypeListItems().filter(listItem => ![hiddenFromBase, 'parentStaff', 'blogPostCategory', 'ctaPage', 'job', 'generalPage', 'post', 'partner', 'quote', 'person'].includes(listItem.getId())),
+    ...S.documentTypeListItems().filter(listItem => ![hiddenFromBase, 'industry', '', 'parentStaff', 'blogPostCategory', 'ctaPage', 'job', 'generalPage', 'post', 'partner', 'quote', 'person'].includes(listItem.getId())),
   ])

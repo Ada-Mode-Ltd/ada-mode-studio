@@ -16,11 +16,14 @@ import person from './documents/person'
 // Other content schemas
 import blogPostCategory from './category'
 import partner from './documents/partner'
+import product from './documents/product'
+import productFeature from './documents/productFeature'
 
 // Objects
 import formField from './objects/formField'
 import blockContent from './base/blockContent'
 import ctaSection from './objects/ctaSection'
+import productDetails from './objects/productDetails'
 // import parentPost from './parentPost'
 // import childPost from './childPost'
 import author from './author'
@@ -60,10 +63,13 @@ export default createSchema({
     quote,
     person,
     ctaSection,
+    productDetails,
     
     // Other content
     partner,
     blogPostCategory,
+    product,
+    productFeature,
     
     // ...amSchema,
     // ...wsSchema,

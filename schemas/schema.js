@@ -26,6 +26,7 @@ import formField from './objects/formField'
 import blockContent from './base/blockContent'
 import ctaSection from './objects/ctaSection'
 import productDetails from './objects/productDetails'
+import sectionHeading from './objects/sectionHeading'
 // import parentPost from './parentPost'
 // import childPost from './childPost'
 import author from './author'
@@ -66,6 +67,7 @@ export default createSchema({
     person,
     ctaSection,
     productDetails,
+    sectionHeading,
     
     // Other content
     partner,

@@ -28,6 +28,7 @@ import ctaSection from './objects/ctaSection'
 import productDetails from './objects/productDetails'
 import sectionHeading from './objects/sectionHeading'
 import pageHeading from './objects/pageHeading'
+import stackedTabs from './objects/stackedTabs'
 // import parentPost from './parentPost'
 // import childPost from './childPost'
 import author from './author'
@@ -70,6 +71,7 @@ export default createSchema({
     productDetails,
     sectionHeading,
     pageHeading,
+    stackedTabs,
     
     // Other content
     partner,

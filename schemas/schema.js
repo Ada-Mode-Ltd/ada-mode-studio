@@ -27,6 +27,7 @@ import blockContent from './base/blockContent'
 import ctaSection from './objects/ctaSection'
 import productDetails from './objects/productDetails'
 import sectionHeading from './objects/sectionHeading'
+import pageHeading from './objects/pageHeading'
 // import parentPost from './parentPost'
 // import childPost from './childPost'
 import author from './author'
@@ -68,6 +69,7 @@ export default createSchema({
     ctaSection,
     productDetails,
     sectionHeading,
+    pageHeading,
     
     // Other content
     partner,

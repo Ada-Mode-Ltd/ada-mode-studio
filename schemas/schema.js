@@ -29,6 +29,7 @@ import productDetails from './objects/productDetails'
 import sectionHeading from './objects/sectionHeading'
 import pageHeading from './objects/pageHeading'
 import stackedTabs from './objects/stackedTabs'
+import comparison from './objects/comparison'
 // import parentPost from './parentPost'
 // import childPost from './childPost'
 import author from './author'
@@ -72,6 +73,7 @@ export default createSchema({
     sectionHeading,
     pageHeading,
     stackedTabs,
+    comparison,
     
     // Other content
     partner,

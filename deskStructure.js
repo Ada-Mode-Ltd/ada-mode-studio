@@ -121,7 +121,8 @@ S.list()
         S.divider(),
         siteSpecificSchemaRef('Product features', 'am', 'productFeature', 'product', 'publishTo'),
         siteSpecificSchema('People', 'am', 'person', 'publishTo'),
-        siteSpecificSchema('Industries', 'am', 'industry', 'publishTo')
+        siteSpecificSchema('Industries', 'am', 'industry', 'publishTo'),
+        siteSpecificSchema('Services', 'am', 'service', 'publishTo'),
         // S.documentTypeListItems().filter(
           //     item => item.getSchemaType().name.startsWith('am-')
           //   )

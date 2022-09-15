@@ -17,6 +17,7 @@ import person from './documents/person'
 import blogPostCategory from './category'
 import partner from './documents/partner'
 import product from './documents/product'
+import service from './documents/service'
 import productFeature from './documents/productFeature'
 import industry from './documents/industry'
 
@@ -70,6 +71,7 @@ export default createSchema({
     partner,
     blogPostCategory,
     product,
+    service,
     productFeature,
     industry,
     

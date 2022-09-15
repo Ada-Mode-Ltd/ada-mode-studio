@@ -148,6 +148,17 @@ export const industry = () => (
 </svg>
 )
 
+export const service = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tools-kitchen" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 3h8l-1 9h-6z" />
+  <path d="M7 18h2v3h-2z" />
+  <path d="M20 3v12h-5c-.023 -3.681 .184 -7.406 5 -12z" />
+  <path d="M20 15v6h-1v-3" />
+  <line x1="8" y1="12" x2="8" y2="18" />
+</svg>
+)
+
 // For CTA Section
 export const OIText = () => <svg viewBox="0 0 793 528" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="1.5"><g stroke="darkslategrey"><path fill="#fff" strokeWidth="25" d="M12.534 12.991h767.933v502.017H12.534z"/><path d="M117.542 125.78s562.598-1.433 560.772-1.765M117.542 216.456s562.598-1.433 560.772-1.765M117.542 307.474s562.598-1.433 560.772-1.766M117.542 398.809s562.598-1.433 560.772-1.766" fill="none" strokeWidth="20"/></g></svg>
 

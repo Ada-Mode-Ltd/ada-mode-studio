@@ -67,7 +67,7 @@ const siteSpecificSchema = (title, site, schemaType, validationField) => {
     .child(
       S.documentTypeList(schemaType)
       .title(`${company} ${title}`)
-      .filter(`_type == $type && $site in ${validationField}`)
+      .filter(`_type == $type && ($site in ${validationField} || $site == ${validationField})`)
       .params({
         type: schemaType,
         site
@@ -194,12 +194,7 @@ S.list()
     .title('Partners')
     .icon(partner)
     .child(
-      S.list()
-       .title('All partners')
-       .items([
-      S.listItem()
-      .title('All partners')
-      .child(
+     
         S.documentTypeList('partner')
         // .title(``) 
         .filter('_type == "partner"')
@@ -208,8 +203,7 @@ S.list()
           .documentId(documentId)
           .schemaType('partner')
         )
-      )
-    ])),
+    ),
     S.divider(),
     S.listItem()
     .title('People')
@@ -217,7 +211,14 @@ S.list()
     .child(
       S.documentTypeList('person')
       // .title(``) 
-      .filter('_type == "people"')
+      .filter('_type == "person"')
+      .defaultOrdering([{field: 'displayOrder', direction: 'asc'}])
+      .menuItems([
+        S.orderingMenuItem({title: 'Display order ascending', by: [{field: 'displayOrder', direction: 'asc'}]}),
+        S.orderingMenuItem({title: 'Display order descending', by: [{field: 'displayOrder', direction: 'desc'}]}),
+        S.orderingMenuItem({title: 'Name ascending', by: [{field: 'name', direction: 'asc'}]}),
+        S.orderingMenuItem({title: 'Name descending', by: [{field: 'name', direction: 'desc'}]}),
+      ])
       .child(documentId =>
         S.document()
         .documentId(documentId)

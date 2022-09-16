@@ -33,12 +33,31 @@ export default {
               ],
             },
             group: 'publishing',
+            validation: Rule => [
+              Rule.required()
+            ],
+          },
+          {
+            name: 'publishedAt',
+            title: 'Published at',
+            type: 'datetime',
+            group: 'publishing',
+            initialValue: () => new Date().toISOString(),
+            validation: Rule => [
+              Rule.required()
+            ],
+            options: {
+              dateFormat: 'DD-MMM-YYYY',
+            }
           },
         {
             name: 'title',
             title: 'Title',
             type: 'string',
             group: 'metadata',
+            validation: Rule => [
+              Rule.required()
+            ]
           },
           {
             name: 'description',
@@ -57,12 +76,18 @@ export default {
               maxLength: 96,
               slugify: slugify,
             },
+            validation: Rule => [
+              Rule.required()
+            ]
           },
           {
             name: 'body',
             title: 'Body',
             type: 'blockContent',
             group: 'content',
+            validation: Rule => [
+              Rule.required()
+            ]
           },
     ],
     preview: {

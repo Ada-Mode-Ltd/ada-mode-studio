@@ -11,11 +11,11 @@ export default {
             title: 'Section title',
             type: 'string',
           },
-        {
-          name: 'tabs',
-          title: 'Tabs',
-          type: 'array',
-          of: [{
+          {
+            name: 'tabs',
+            title: 'Tabs',
+            type: 'array',
+            of: [{
             name: 'tab',
             title: 'Tab',
             type: 'object',
@@ -24,17 +24,26 @@ export default {
                 name: 'title',
                 title: 'Title',
                 type: 'string',
+                validation: Rule => [
+                  Rule.required()
+                ]
               },
               {
                 name: 'text',
                 title: 'Text',
                 type: 'text',
+                validation: Rule => [
+                  Rule.required()
+                ]
               },
               {
                 name: 'image',
                 title: 'Image',
                 type: 'image',
-                fields: imageFields
+                fields: imageFields,
+                validation: Rule => [
+                  Rule.required()
+                ]
               },
             ],
           },],
@@ -42,8 +51,30 @@ export default {
             Rule.min(2)
               .max(3)
               .error('Required field with at least 2 and at most 3 entries.'),
-          ]
-        },
+            ]
+          },
+          {
+              name: 'sectionLink',
+              title: 'Action link',
+              type: 'object',
+              fields: [
+                {
+                  name: 'text',
+                  title: 'Text',
+                  type: 'string',
+                  validation: Rule => [
+                    Rule.required()
+                  ]
+                },
+                {
+                  name: 'url',
+                  title: 'Url',
+                  type: 'url',
+                  validation: Rule => [
+                    Rule.required()
+                  ]
+                }]
+            },
     ],
     // Todo: Need to fix up this preview
     preview: {

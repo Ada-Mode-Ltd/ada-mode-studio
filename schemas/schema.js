@@ -20,6 +20,7 @@ import product from './documents/product'
 import service from './documents/service'
 import productFeature from './documents/productFeature'
 import industry from './documents/industry'
+import wsHomepage from './documents/wsHomepage'
 
 // Objects
 import formField from './objects/formField'
@@ -64,6 +65,7 @@ export default createSchema({
     ctaPage,
     job,
     generalPage,
+    wsHomepage,
     
     // Components
     quote,

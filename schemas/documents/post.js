@@ -1,4 +1,5 @@
 import { slugify } from "../../utils/schema"
+import { imageFields } from "../../utils/imageFields"
 
 export default {
   name: 'post',
@@ -32,6 +33,9 @@ export default {
       title: 'Title',
       type: 'string',
       group: 'metadata',
+      validation: Rule => [
+        Rule.required()
+      ]
     },
     {
       name: 'description',
@@ -50,6 +54,9 @@ export default {
         maxLength: 96,
         slugify: slugify,
       },
+      validation: Rule => [
+        Rule.required()
+      ]
     },
     {
       name: 'author',
@@ -100,15 +107,19 @@ export default {
       type: 'datetime',
       group: 'publishing',
       initialValue: () => new Date().toISOString(),
+      validation: Rule => [
+        Rule.required()
+      ],
+      options: {
+        dateFormat: 'DD-MMM-YYYY',
+      }
     },
     {
       name: 'mainImage',
       title: 'Main image',
       type: 'image',
       group: 'content',
-      options: {
-        hotspot: true,
-      },
+      fields: imageFields,
     },
     {
       name: 'blurb',
@@ -116,12 +127,18 @@ export default {
       type: 'text',
       description: 'This content will be shown on the blog index page. It can be the same as the description, or a shorter version.',
       group: 'content',
+      validation: Rule => [
+        Rule.required()
+      ],
     },
     {
       name: 'body',
       title: 'Body',
       type: 'blockContent',
       group: 'content',
+      validation: Rule => [
+        Rule.required()
+      ],
     },
     {
       name: 'related',

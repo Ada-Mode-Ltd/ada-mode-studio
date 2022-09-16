@@ -40,6 +40,9 @@ export default {
             title: 'Title',
             type: 'string',
             group: 'metadata',
+            validation: Rule => [
+                Rule.required()
+            ]
           },
           {
             name: 'description',
@@ -53,6 +56,9 @@ export default {
             title: 'Slug',
             type: 'slug',
             group: 'metadata',
+            validation: Rule => [
+              Rule.required()
+          ],
             options: {
               source: 'title',
               maxLength: 96,

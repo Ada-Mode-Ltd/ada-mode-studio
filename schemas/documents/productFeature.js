@@ -9,6 +9,8 @@ const largeStatRender = props => (
   <span style={{ fontSize: '2rem' }}>{props.children}</span>
 )
 
+const validation = (featureType, parent) => parent.featureType === featureType ? true : false
+
 export default {
     name: 'productFeature',
     title: 'Product feature',
@@ -50,20 +52,27 @@ export default {
     validation: Rule => [
       Rule.required()
     ]
-      },
-      {
-        name: 'product',
-        title: 'Product',
-        type: 'reference',
-        to: [{ type: 'product' }],
-        // TODO: Would be handy to have some filtering here
+  },
+  {
+    name: 'product',
+    title: 'Product',
+    type: 'reference',
+    to: [{ type: 'product' }],
+    // TODO: Would be handy to have some filtering here
+    validation: Rule => [
+      Rule.required()
+    ]
       },
       // All fields for large feature type
         {
             name: 'longTitle',
             title: 'Long title',
             type: 'string',
-            fieldset: 'large'
+            fieldset: 'large',
+            validation: Rule => Rule.custom((value, context) => {
+              const { parent } = context
+              return validation('large', parent) && !value ? 'A title is required.' : true
+            }),
         },
         {
             name: 'secondaryTitle',
@@ -85,7 +94,11 @@ export default {
           }}
             ],
           },}],
-          fieldset: 'large'
+          fieldset: 'large',
+          validation: Rule => Rule.custom((value, context) => {
+            const { parent } = context
+            return validation('large', parent) && !value ? 'A block of text is required.' : true
+          }),
         },
         {
           name: 'largeImage',
@@ -107,7 +120,11 @@ export default {
               },
               description: 'This will offset the image and generate a dark background to create visual effect.',
             },
-          ]
+          ],
+          validation: Rule => Rule.custom((value, context) => {
+            const { parent } = context
+            return validation('large', parent) && !value ? 'An image is required.' : true
+          }),
         },
         {
           name: 'link',

@@ -8,7 +8,7 @@ export default {
         title: 'Member of',
         type: 'array',
         of: [{type: 'string'}],
-        initialValue: ['am'],
+        initialValue: ['am', 'ws'],
     options: {
       list: [
         {title: 'Windscope', value: 'ws'},
@@ -24,30 +24,51 @@ export default {
             name: 'name',
             title: 'Name',
             type: 'string',
+            validation: Rule => [
+              Rule.required()
+            ]       
           },
           {
             name: 'position',
             title: 'Position',
             type: 'string',
+            validation: Rule => [
+              Rule.required()
+            ]
           },
           {
             name: 'photo',
             title: 'Photo',
             type: 'image',
+            options: {
+              hotspot: true,
+            },
+            validation: Rule => [
+              Rule.required()
+            ]
           },
           {
             name: 'linkedIn',
             title: 'LinkedIn Profile',
             type: 'url',
-          }
+          },
+          {
+            name: 'displayOrder',
+            title: 'Display Order',
+            type: 'number',
+            description: 'Optional: Use this field to set a specific display order for this person.'
+          },
     ],
     preview: {
         select: {
           title: 'name',
           media: 'photo',
+          order: 'displayOrder'
         },
         prepare(selection) {
+          const { order } = selection
           return Object.assign({}, selection, {
+            subtitle: order ? `Display order: ${order}` : ''
           })
         },
       },

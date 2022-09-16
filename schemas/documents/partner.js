@@ -24,11 +24,17 @@ export default {
             name: 'name',
             title: 'Name',
             type: 'string',
+            validation: Rule => [
+              Rule.required()
+            ]
           },
           {
             name: 'logo',
             title: 'Logo',
             type: 'image',
+            validation: Rule => [
+              Rule.required()
+            ]
           },
           {
             name: 'website',
@@ -40,9 +46,12 @@ export default {
         select: {
           title: 'name',
           media: 'logo',
+          website: 'website'
         },
         prepare(selection) {
+          const { website } = selection
           return Object.assign({}, selection, {
+            subtitle: website || ''
           })
         },
       },

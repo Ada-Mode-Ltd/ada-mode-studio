@@ -1,7 +1,10 @@
+import { category } from "../../utils/icons"
+
 export default {
   name: 'blogPostCategory',
   title: 'Category',
   type: 'document',
+  icon: category,
   fields: [
     {
       name: 'publishTo',

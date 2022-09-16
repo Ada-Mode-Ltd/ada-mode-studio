@@ -159,6 +159,14 @@ export const service = () => (
 </svg>
 )
 
+export const category = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <circle cx="8.5" cy="8.5" r="1" fill="currentColor" />
+  <path d="M4 7v3.859c0 .537 .213 1.052 .593 1.432l8.116 8.116a2.025 2.025 0 0 0 2.864 0l4.834 -4.834a2.025 2.025 0 0 0 0 -2.864l-8.117 -8.116a2.025 2.025 0 0 0 -1.431 -.593h-3.859a3 3 0 0 0 -3 3z" />
+</svg>
+)
+
 // For CTA Section
 export const OIText = () => <svg viewBox="0 0 793 528" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="1.5"><g stroke="darkslategrey"><path fill="#fff" strokeWidth="25" d="M12.534 12.991h767.933v502.017H12.534z"/><path d="M117.542 125.78s562.598-1.433 560.772-1.765M117.542 216.456s562.598-1.433 560.772-1.765M117.542 307.474s562.598-1.433 560.772-1.766M117.542 398.809s562.598-1.433 560.772-1.766" fill="none" strokeWidth="20"/></g></svg>
 

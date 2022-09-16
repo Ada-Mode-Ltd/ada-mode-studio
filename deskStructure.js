@@ -1,7 +1,7 @@
 // /deskStructure.js
 import S from '@sanity/desk-tool/structure-builder'
 import { windscope, adaMode  } from './utils/logos';
-import { keyboard, partner, note, briefcase, quote, click, write, person, team, industry, confetti, productTM } from './utils/icons';
+import { keyboard, partner, note, briefcase, quote, click, write, person, team, industry, confetti, productTM, category } from './utils/icons';
 
 const hiddenFromBase = S.documentTypeListItems().filter(item => item.getId().startsWith('am') || item.getId().startsWith('ws')).map(item => item.getId())
 
@@ -40,6 +40,10 @@ const returnIcon = (schemaType) => {
 
   if (schemaType === 'industry') {
     return industry;
+  }
+
+  if (schemaType === 'category') {
+    return category;
   }
   
   return
@@ -173,6 +177,7 @@ S.list()
       ),
       S.listItem()
       .title('Categories')
+      .icon(category)
       .child(
         S.documentTypeList('blogPostCategory')
         .title('Categories')

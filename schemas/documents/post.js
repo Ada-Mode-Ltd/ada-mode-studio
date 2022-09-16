@@ -55,7 +55,7 @@ export default {
       name: 'author',
       title: 'Author',
       type: 'reference',
-      to: {type: 'parentStaff'},
+      to: {type: 'person'},
       group: 'metadata',
     },
     {

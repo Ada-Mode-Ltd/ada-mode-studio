@@ -1,3 +1,5 @@
+import { imageFields } from "../../utils/imageFields"
+import React from 'react';
 /**
  * This is the schema definition for the rich text fields used for
  * for this blog studio. When you import it in schemas.js it can be
@@ -8,6 +10,14 @@
  *    type: 'blockContent'
  *  }
  */
+
+ const largeStatIcon = () => (
+  <span style={{ fontWeight: 'bold' }}>20%</span>
+)
+const largeStatRender = props => (
+  <span style={{ fontSize: '2rem' }}>{props.children}</span>
+)
+
 export default {
   title: 'Block Content',
   name: 'blockContent',
@@ -28,7 +38,10 @@ export default {
         {title: 'H4', value: 'h4'},
         {title: 'Quote', value: 'blockquote'},
       ],
-      lists: [{title: 'Bullet', value: 'bullet'}],
+      lists: [
+        {title: 'Bullet', value: 'bullet'},
+        {title: 'Numbered', value: 'number'}
+      ],
       // Marks let you mark up inline text in the block editor.
       marks: {
         // Decorators usually describe a single property – e.g. a typographic
@@ -36,6 +49,10 @@ export default {
         decorators: [
           {title: 'Strong', value: 'strong'},
           {title: 'Emphasis', value: 'em'},
+          { title: 'Large Statistic', value: 'largeStat', blockEditor: {
+            icon: largeStatIcon,
+            render: largeStatRender
+          }}
         ],
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [
@@ -59,10 +76,22 @@ export default {
     // as a block type.
     {
       type: 'image',
-      options: {hotspot: true},
+      fields: [
+        {
+          name: 'caption',
+          title: 'Caption',
+          type: 'text',
+        },
+        ...imageFields,
+      ]
     },
-    {
-      type: 'ctaSection',
-    }
+    // TODO: Add internal linking references here
+    { type: 'ctaSection' },
+    { type: 'pageHeading' },
+    { type: 'productFeature' },
+    { type: 'quote' },
+    { type: 'service' },
+    { type: 'stackedTabs' },
+    { type: 'comparison' },
   ],
 }

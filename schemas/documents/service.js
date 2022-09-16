@@ -16,7 +16,7 @@ export default {
         {
             name: 'text',
             title: 'Text',
-            type: 'Text',
+            type: 'text',
         },
         {
             name: 'image',

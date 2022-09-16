@@ -2,6 +2,13 @@ import { confetti  } from "../../utils/icons"
 import { imageFields } from "../../utils/imageFields"
 import React from 'react';
 
+const largeStatIcon = () => (
+  <span style={{ fontWeight: 'bold' }}>20%</span>
+)
+const largeStatRender = props => (
+  <span style={{ fontSize: '2rem' }}>{props.children}</span>
+)
+
 export default {
     name: 'productFeature',
     title: 'Product feature',
@@ -72,14 +79,10 @@ export default {
             decorators: [
               { title: "Strong", value: "strong" },
               { title: "Emphasis", value: "em" },
-              {
-                title: "Sup",
-                value: "sup",
-                blockEditor: {
-                  icon: () => <div>x<sup>2</sup></div>,
-                  render: ({ children }) => <sup>{children}</sup>
-                }
-              },
+               { title: 'Large Statistic', value: 'largeStat', blockEditor: {
+            icon: largeStatIcon,
+            render: largeStatRender
+          }}
             ],
           },}],
           fieldset: 'large'

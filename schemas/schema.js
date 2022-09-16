@@ -14,7 +14,7 @@ import generalPage from './documents/page'
 import quote from './documents/quote'
 import person from './documents/person'
 // Other content schemas
-import blogPostCategory from './category'
+import blogPostCategory from './documents/category'
 import partner from './documents/partner'
 import product from './documents/product'
 import service from './documents/service'
@@ -32,8 +32,8 @@ import stackedTabs from './objects/stackedTabs'
 import comparison from './objects/comparison'
 // import parentPost from './parentPost'
 // import childPost from './childPost'
-import author from './author'
-import childSettings from './settings'
+// import author from './author'
+// import childSettings from './settings'
 
 // const amSchema = [
 //   post('am'),
@@ -52,8 +52,8 @@ export default createSchema({
   types: schemaTypes.concat([
     // The following are document types which will appear
     // in the studio.
-    author,
-    childSettings,
+    // author,
+    // childSettings,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     blockContent,

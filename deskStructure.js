@@ -1,7 +1,7 @@
 // /deskStructure.js
 import S from '@sanity/desk-tool/structure-builder'
 import { windscope, adaMode  } from './utils/logos';
-import { keyboard, partner, note, briefcase, quote, click, write, person, team, industry, confetti, productTM, category } from './utils/icons';
+import { keyboard, partner, note, briefcase, quote, click, write, person, team, industry, confetti, productTM, category, home } from './utils/icons';
 
 const hiddenFromBase = S.documentTypeListItems().filter(item => item.getId().startsWith('am') || item.getId().startsWith('ws')).map(item => item.getId())
 
@@ -142,16 +142,27 @@ S.list()
           .items([
             siteSpecificSchema('Posts', 'ws', 'post', 'publishTo'),
             siteSpecificSchema('CTA pages', 'ws', 'ctaPage', 'publishTo'),
+            S.listItem()
+    .title('Homepage')
+    .icon(home)
+    .child(
+      
+      S.documentTypeList('wsHomepage')
+      // .title(``) 
+      .filter('_type == "wsHomepage"')
+      .child(documentId =>
+        S.document()
+          .documentId(documentId)
+          .schemaType('wsHomepage')
+        )
+    ),
             siteSpecificSchema('General page', 'ws', 'generalPage', 'publishTo'),
             S.divider(),
             siteSpecificSchema('Partners', 'ws', 'partner', 'publishTo'),
             siteSpecificSchema('Quotes', 'ws', 'quote', 'publishTo'),
             S.divider(),
             siteSpecificSchemaRef('Product features', 'ws', 'productFeature', 'product', 'publishTo'),
-            siteSpecificSchema('People', 'ws', 'person', 'publishTo')
-        // S.documentTypeListItems().filter(
-        //     item => item.getSchemaType().name.startsWith('ws-')
-        //   )  
+            siteSpecificSchema('People', 'ws', 'person', 'publishTo'),
       ])
     ),
     S.divider(),

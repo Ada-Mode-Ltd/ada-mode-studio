@@ -1,5 +1,7 @@
 import { imageFields } from "../../utils/imageFields"
-import { pageHeading  } from "../../utils/icons"
+import { pageHeading, highlightBlue, highlightGreen  } from "../../utils/icons"
+const renderHighlightBlue = props => <span style={{ color: '#3065FB' }}>{props.children}</span>
+const renderHighlightGreen = props => <span style={{ color: '#1FCA51' }}>{props.children}</span>
 import React from 'react';
 
 export default {
@@ -11,9 +13,42 @@ export default {
         {
             name: 'title',
             title: 'Title',
-            type: 'string',
-            validation: Rule => Rule.required(),
-          },
+            type: 'array',
+            of: [{
+                type: 'block',
+                styles: [
+                    {title: 'H1', value: 'h1'},
+                    {title: 'Normal', value: 'normal'},
+                ],
+                lists: [],
+                marks: {
+                  // Decorators usually describe a single property – e.g. a typographic
+                  // preference or highlighting by editors.
+                  decorators: [
+                    {title: 'Strong', value: 'strong'},
+                    {title: 'Emphasis', value: 'em'},
+                    {
+                      title: 'Highlight Blue',
+                      value: 'highlightBlue',
+                      blockEditor: {
+                        icon: highlightBlue,
+                        render: renderHighlightBlue,
+                      },
+                    },
+                    {
+                      title: 'Highlight Green',
+                      value: 'highlightGreen',
+                      blockEditor: {
+                        icon: highlightGreen,
+                        render: renderHighlightGreen,
+                      },
+                    }
+                  ],
+                  annotations: []
+                }
+        }],
+        validation: Rule => Rule.required(),
+            },
         {
             name: 'tagline',
             title: 'Tagline',
@@ -58,8 +93,15 @@ export default {
           // media: 'photo',
         },
         prepare(selection) {
-          return Object.assign({}, selection, {
-          })
+          const block = (selection.title || []).find(block => block._type === 'block')
+      return {
+        title: block
+          ? block.children
+            .filter(child => child._type === 'span')
+            .map(span => span.text)
+            .join('')
+          : 'No title'
+      }
         },
       },
 }

@@ -1,4 +1,5 @@
 import { imageFields } from "../../utils/imageFields"
+import { highlightBlue, highlightGreen } from "../../utils/icons";
 import React from 'react';
 /**
  * This is the schema definition for the rich text fields used for
@@ -17,6 +18,9 @@ import React from 'react';
 const largeStatRender = props => (
   <span style={{ fontSize: '2rem' }}>{props.children}</span>
 )
+
+const renderHighlightBlue = props => <span style={{ color: '#2276fc' }}>{props.children}</span>
+const renderHighlightGreen = props => <span style={{ color: '#2276fc' }}>{props.children}</span>
 
 export default {
   title: 'Block Content',
@@ -56,7 +60,23 @@ export default {
             { title: 'Large Statistic', value: 'largeStat', blockEditor: {
               icon: largeStatIcon,
               render: largeStatRender
-            }}
+            }},
+            {
+              title: 'Highlight Blue',
+              value: 'highlightBlue',
+              blockEditor: {
+                icon: highlightBlue,
+                render: renderHighlightBlue,
+              },
+            },
+            {
+              title: 'Highlight Green',
+              value: 'highlightGreen',
+              blockEditor: {
+                icon: highlightGreen,
+                render: renderHighlightGreen,
+              },
+            }
           ],
           // Annotations can be any object structure – e.g. a link or a footnote.
           annotations: [

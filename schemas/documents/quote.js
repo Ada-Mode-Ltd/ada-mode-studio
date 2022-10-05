@@ -1,7 +1,10 @@
+import { quote } from '../../utils/icons'
+
 export default {
     name: 'quote',
     title: 'Partner Quote',
     type: 'document',
+    icon: quote,
     fields: [
         {
             name: 'publishTo',

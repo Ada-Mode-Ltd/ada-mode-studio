@@ -31,6 +31,8 @@ import sectionHeading from './objects/sectionHeading'
 import pageHeading from './objects/pageHeading'
 import stackedTabs from './objects/stackedTabs'
 import comparison from './objects/comparison'
+import blockLayout from './objects/blockLayout'
+import quoteCarousel from './objects/quoteCarousel'
 // import parentPost from './parentPost'
 // import childPost from './childPost'
 // import author from './author'
@@ -76,6 +78,8 @@ export default createSchema({
     pageHeading,
     stackedTabs,
     comparison,
+    blockLayout,
+    quoteCarousel,
     
     // Other content
     partner,

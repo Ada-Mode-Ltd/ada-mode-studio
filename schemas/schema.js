@@ -9,7 +9,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 import post from './documents/post'
 import ctaPage from './documents/ctaPage'
 import job from './documents/job'
-import generalPage from './documents/page'
+import page from './documents/page'
 // Component schemas
 import quote from './documents/quote'
 import person from './documents/person'
@@ -64,7 +64,7 @@ export default createSchema({
     post,
     ctaPage,
     job,
-    generalPage,
+    page,
     wsHomepage,
     
     // Components

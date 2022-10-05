@@ -26,7 +26,7 @@ const returnIcon = (schemaType) => {
     return click;
   }
 
-  if (schemaType === 'generalPage') {
+  if (schemaType === 'page') {
     return note;
   }
   
@@ -118,7 +118,7 @@ S.list()
       .items([
         siteSpecificSchema('Posts', 'am', 'post', 'publishTo'),
         siteSpecificSchema('Job listings', 'am', 'job', 'publishTo'),
-        siteSpecificSchema('General page', 'am', 'generalPage', 'publishTo'),
+        siteSpecificSchema('Page', 'am', 'page', 'publishTo'),
         S.divider(),
         siteSpecificSchema('Partners', 'am', 'partner', 'publishTo'),
         siteSpecificSchema('Quotes', 'am', 'quote', 'publishTo'),
@@ -156,7 +156,7 @@ S.list()
           .schemaType('wsHomepage')
         )
     ),
-            siteSpecificSchema('General page', 'ws', 'generalPage', 'publishTo'),
+            siteSpecificSchema('Page', 'ws', 'page', 'publishTo'),
             S.divider(),
             siteSpecificSchema('Partners', 'ws', 'partner', 'publishTo'),
             siteSpecificSchema('Quotes', 'ws', 'quote', 'publishTo'),
@@ -253,5 +253,5 @@ S.list()
     ),
 
     // The rest of this document is from the original manual grouping in this series of articles
-    ...S.documentTypeListItems().filter(listItem => ![hiddenFromBase, 'service', 'industry', 'product', 'productFeature', 'parentStaff', 'blogPostCategory', 'ctaPage', 'job', 'generalPage', 'post', 'partner', 'quote', 'person'].includes(listItem.getId())),
+    ...S.documentTypeListItems().filter(listItem => ![hiddenFromBase, 'service', 'industry', 'product', 'productFeature', 'parentStaff', 'blogPostCategory', 'ctaPage', 'job', 'page', 'post', 'partner', 'quote', 'person'].includes(listItem.getId())),
   ])

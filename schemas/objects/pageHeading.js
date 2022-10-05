@@ -1,10 +1,12 @@
 import { imageFields } from "../../utils/imageFields"
+import { pageHeading  } from "../../utils/icons"
 import React from 'react';
 
 export default {
     name: 'pageHeading',
     title: 'Page Heading',
     type: 'object',
+    icon: pageHeading,
     fields: [
         {
             name: 'title',
@@ -16,6 +18,23 @@ export default {
             name: 'tagline',
             title: 'Tagline',
             type: 'string',
+          },
+          {
+            name: 'showDate',
+            title: 'Show last updated date',
+            type: 'boolean',
+            description: "Display the date this page was last updated above the title.",
+          },
+          {
+            name: 'textAlign',
+            title: 'Text align',
+            type: 'string',
+            options: {
+              list: [
+                {title: 'Left', value: 'left'},
+                {title: 'Center', value: 'center'},
+              ],
+            }
           },
         {
           name: 'keyVisual',

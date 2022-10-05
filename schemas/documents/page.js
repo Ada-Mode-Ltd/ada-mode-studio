@@ -1,8 +1,8 @@
 import { slugify } from "../../utils/schema"
 
 export default {
-    name: 'generalPage',
-    title: 'General page',
+    name: 'page',
+    title: 'Page builder',
     type: 'document',
     groups: [
         {
@@ -83,7 +83,18 @@ export default {
           {
             name: 'body',
             title: 'Body',
-            type: 'blockContent',
+            type: 'array',
+            of: [
+              {type: 'blockContent'},
+              { type: 'sectionHeading' },
+              { type: 'ctaSection' },
+      { type: 'pageHeading' },
+      { type: 'productFeature' },
+      { type: 'quote' },
+      { type: 'service' },
+      { type: 'stackedTabs' },
+      { type: 'comparison' },
+            ],
             group: 'content',
             validation: Rule => [
               Rule.required()

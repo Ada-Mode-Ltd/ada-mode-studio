@@ -5,12 +5,14 @@ import {
   OIText,
   OITextBottomOverlap,
   OITextTopOverlap,
+  click,
 } from "../../utils/icons"
 
 export default {
     name: 'ctaSection',
     title: 'CTA Section',
     type: 'object',
+    icon: click,
     fields: [
       {
         name: "blockLayout",

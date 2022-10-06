@@ -33,6 +33,7 @@ import stackedTabs from './objects/stackedTabs'
 import comparison from './objects/comparison'
 import blockLayout from './objects/blockLayout'
 import quoteCarousel from './objects/quoteCarousel'
+import people from './objects/people'
 // import parentPost from './parentPost'
 // import childPost from './childPost'
 // import author from './author'
@@ -80,6 +81,7 @@ export default createSchema({
     comparison,
     blockLayout,
     quoteCarousel,
+    people,
     
     // Other content
     partner,

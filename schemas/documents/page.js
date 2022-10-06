@@ -99,9 +99,20 @@ export default {
               { type: 'ctaSection' },
             ],
             group: 'content',
-            validation: Rule => [
-              Rule.required(),
-            ]
+            validation: Rule => Rule.required().custom((blocks) => {
+                const pageHeading = blocks.filter(block => block._type === 'pageHeading')
+                if (pageHeading) {
+                  if(blocks.findIndex(block => block._type === 'pageHeading') !== 0)
+                  return 'Page heading must be the first block'
+                }
+                
+                const quoteCarousels = blocks.filter(block => block._type === 'quoteCarousel')
+                if (quoteCarousels?.length > 1) {
+                  return 'Only one quote carousel is allowed per page'
+                }
+
+                return true
+              }),
           },
     ],
     preview: {

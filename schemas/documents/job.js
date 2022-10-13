@@ -17,19 +17,21 @@ export default {
           },
     ],
     fields: [
-        {
-            name: 'publishTo',
-            title: 'Publish to',
-            type: 'string',
-            initialValue: 'am',
-            options: {
-              list: [
-                {title: 'Ada Mode', value: 'am'},
-                {title: 'Windscope', value: 'ws'},
-              ],
-            },
-            hidden: true,
-          },
+      {
+        name: 'publishTo',
+        title: 'Publish to',
+        type: 'array',
+        of: [{type: 'string'}],
+        initialValue: ['am', 'ws'],
+    options: {
+      list: [
+        {title: 'Windscope', value: 'ws'},
+        {title: 'Ada Mode', value: 'am'},
+      ],
+      layout: 'grid',
+    },
+    group: 'metadata',
+  },
         {
             name: 'title',
             title: 'Title',

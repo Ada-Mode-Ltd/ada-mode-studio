@@ -228,6 +228,17 @@ export const highlightGreen = () => (
 </svg>
 )
 
+export const row = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-autofit-content" width="22" height="22" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M6 4l-3 3l3 3" />
+  <path d="M18 4l3 3l-3 3" />
+  <rect x="4" y="14" width="16" height="6" rx="2" />
+  <path d="M10 7h-7" />
+  <path d="M21 7h-7" />
+</svg>
+)
+
 // For CTA Section
 export const OIText = () => <svg viewBox="0 0 793 528" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="1.5"><g stroke="darkslategrey"><path fill="#fff" strokeWidth="25" d="M12.534 12.991h767.933v502.017H12.534z"/><path d="M117.542 125.78s562.598-1.433 560.772-1.765M117.542 216.456s562.598-1.433 560.772-1.765M117.542 307.474s562.598-1.433 560.772-1.766M117.542 398.809s562.598-1.433 560.772-1.766" fill="none" strokeWidth="20"/></g></svg>
 

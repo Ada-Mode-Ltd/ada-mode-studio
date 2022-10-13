@@ -34,6 +34,7 @@ import comparison from './objects/comparison'
 import blockLayout from './objects/blockLayout'
 import quoteCarousel from './objects/quoteCarousel'
 import people from './objects/people'
+import rowOfLogos from './objects/rowOfLogos'
 // import parentPost from './parentPost'
 // import childPost from './childPost'
 // import author from './author'
@@ -82,6 +83,7 @@ export default createSchema({
     blockLayout,
     quoteCarousel,
     people,
+    rowOfLogos,
     
     // Other content
     partner,

@@ -1,5 +1,6 @@
 import { confetti  } from "../../utils/icons"
 import { imageFields } from "../../utils/imageFields"
+import { highlightBlue, highlightGreen } from "../../utils/icons";
 import React from 'react';
 
 const largeStatIcon = () => (
@@ -8,6 +9,9 @@ const largeStatIcon = () => (
 const largeStatRender = props => (
   <span style={{ fontSize: '2rem' }}>{props.children}</span>
 )
+
+const renderHighlightBlue = props => <span style={{ color: '#2276fc' }}>{props.children}</span>
+const renderHighlightGreen = props => <span style={{ color: '#2276fc' }}>{props.children}</span>
 
 const validation = (featureType, parent) => parent.featureType === featureType ? true : false
 
@@ -67,7 +71,27 @@ export default {
         {
             name: 'longTitle',
             title: 'Long title',
-            type: 'string',
+            type: 'array', 
+          of: [{type: 'block', marks: {
+            decorators: [
+          {
+            title: 'Highlight Blue',
+            value: 'highlightBlue',
+            blockEditor: {
+              icon: highlightBlue,
+              render: renderHighlightBlue,
+            },
+          },
+          {
+            title: 'Highlight Green',
+            value: 'highlightGreen',
+            blockEditor: {
+              icon: highlightGreen,
+              render: renderHighlightGreen,
+            },
+          }
+            ],
+          },}],
             fieldset: 'large',
             validation: Rule => Rule.custom((value, context) => {
               const { parent } = context
@@ -91,7 +115,23 @@ export default {
                { title: 'Large Statistic', value: 'largeStat', blockEditor: {
             icon: largeStatIcon,
             render: largeStatRender
-          }}
+          }},
+          {
+            title: 'Highlight Blue',
+            value: 'highlightBlue',
+            blockEditor: {
+              icon: highlightBlue,
+              render: renderHighlightBlue,
+            },
+          },
+          {
+            title: 'Highlight Green',
+            value: 'highlightGreen',
+            blockEditor: {
+              icon: highlightGreen,
+              render: renderHighlightGreen,
+            },
+          }
             ],
           },}],
           fieldset: 'large',

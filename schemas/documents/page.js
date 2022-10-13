@@ -94,6 +94,7 @@ export default {
               { type: 'quoteCarousel' },
               { type: 'people' },
               { type: 'service' },
+              { type: 'careers' },
               { type: 'rowOfLogos' },
               { type: 'stackedTabs' },
               { type: 'comparison' },

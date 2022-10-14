@@ -21,6 +21,8 @@
     "@sanity/default-login": "^2.31.1",
     "@sanity/desk-tool": "^2.31.1",
     "@sanity/vision": "^2.31.1",
+    "get-video-id": "^3.6.5",
+    "nanoid": "^4.0.0",
     "prop-types": "^15.7",
     "react": "^17.0",
     "react-dom": "^17.0",

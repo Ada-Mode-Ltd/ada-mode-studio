@@ -36,6 +36,7 @@ import quoteCarousel from './objects/quoteCarousel'
 import people from './objects/people'
 import rowOfLogos from './objects/rowOfLogos'
 import careers from './objects/careers'
+import videoId from './objects/video'
 // import parentPost from './parentPost'
 // import childPost from './childPost'
 // import author from './author'
@@ -86,6 +87,7 @@ export default createSchema({
     people,
     rowOfLogos,
     careers,
+    videoId,
     
     // Other content
     partner,

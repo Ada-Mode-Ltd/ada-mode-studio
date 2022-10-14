@@ -109,6 +109,11 @@ export default {
           ...imageFields,
         ]
       },
+      {
+        type: 'video',
+        type: 'videoId',
+        title: 'Video (YouTube/Vimeo)'
+      }
       // TODO: Add internal linking references here
       
     ],

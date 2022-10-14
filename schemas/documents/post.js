@@ -140,19 +140,6 @@ export default {
         Rule.required()
       ],
     },
-    {
-      name: 'related',
-      title: 'Related Posts',
-      type: 'array',
-      of: [{type: 'reference', to: {type: 'post'}}],
-      group: 'related',
-      // TODO: Would be nice to have some filtering logic here (e.g. only show posts from the same site)
-      validation: Rule => [
-        Rule.max(3)
-          .error('This field can have a maximum of 3 entries.'),
-        Rule.unique()
-      ]
-    },
   ],
 
   preview: {

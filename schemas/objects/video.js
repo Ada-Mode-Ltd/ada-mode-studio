@@ -38,12 +38,13 @@ export default {
   preview: {
     select: {
       id: "id",
+      url: "url",
       service: "service",
       thumbnail: "thumbnail",
     },
-    prepare({ service = "", thumbnail }) {
+    prepare({ service = "", thumbnail, url }) {
       return {
-        title: `video ${service}`,
+        title: `Video: ${url}`,
         media: () => (thumbnail ? <img src={thumbnail} /> : null),
       };
     },

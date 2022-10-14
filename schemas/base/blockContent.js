@@ -105,6 +105,9 @@ export default {
             name: 'caption',
             title: 'Caption',
             type: 'text',
+            options: {
+              isHighlighted: true // <-- make this field easily accessible
+            }
           },
           ...imageFields,
         ]

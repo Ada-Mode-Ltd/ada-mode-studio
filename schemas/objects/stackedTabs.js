@@ -1,10 +1,12 @@
 import { imageFields } from "../../utils/imageFields"
+import { stack } from "../../utils/icons"
 import React from 'react';
 
 export default {
     name: 'stackedTabs',
     title: 'Stacked Tabs',
     type: 'object',
+    icon: stack,
     fields: [
         {
             name: 'title',

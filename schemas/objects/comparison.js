@@ -1,7 +1,10 @@
+import { scales } from '../../utils/icons'
+
 export default {
     name: 'comparison',
     title: 'Comparison table',
     type: 'object',
+    icon: scales,
     fields: [
         {
             name: 'title',

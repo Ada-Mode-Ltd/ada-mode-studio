@@ -11,7 +11,7 @@ export default {
       type: "string",
       name: "url",
       title: "Video URL",
-      description: "A URL to a vimeo or youtube video",
+      description: "A URL to a Vimeo or Youtube video",
     },
     {
       type: "string",

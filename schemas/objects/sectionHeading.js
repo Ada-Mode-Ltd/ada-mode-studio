@@ -1,7 +1,10 @@
+import {h2} from '../../utils/icons'
+
 export default {
     name: 'sectionHeading',
     title: 'Section Heading',
     type: 'object',
+    icon: h2,
     fields: [
         {
             name: 'title',

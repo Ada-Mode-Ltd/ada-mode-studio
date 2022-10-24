@@ -58,7 +58,7 @@ const returnIcon = (schemaType) => {
  * @returns Sanity structure builder object
  */
 
-const siteSpecificSchema = (title, site, schemaType, validationField) => {
+const siteSpecificSchema = (title, site, schemaType, validationField, orderBy = {field: '_updatedAt', direction: 'desc'}) => {
   const company = site === 'ws' ? 'Windscope' : 'Ada Mode';
 
   return S.listItem()
@@ -68,6 +68,7 @@ const siteSpecificSchema = (title, site, schemaType, validationField) => {
       S.documentTypeList(schemaType)
       .title(`${company} ${title}`)
       .filter(`_type == $type && ($site in ${validationField} || $site == ${validationField})`)
+      .defaultOrdering([orderBy])
       .params({
         type: schemaType,
         site
@@ -116,8 +117,8 @@ S.list()
       .title('Content')
       .id('am')
       .items([
-        siteSpecificSchema('Posts', 'am', 'post', 'publishTo'),
-        siteSpecificSchema('Job listings', 'am', 'job', 'publishTo'),
+        siteSpecificSchema('Blog posts', 'am', 'post', 'publishTo'),
+        siteSpecificSchema('Job listings', 'am', 'job', 'publishTo', {field: 'open', direction: 'desc'}),
         siteSpecificSchema('Page', 'am', 'page', 'publishTo'),
         S.divider(),
         siteSpecificSchema('Partners', 'am', 'partner', 'publishTo'),
@@ -140,8 +141,6 @@ S.list()
           .title('Content')
           .id('ws')
           .items([
-            siteSpecificSchema('Posts', 'ws', 'post', 'publishTo'),
-            siteSpecificSchema('CTA pages', 'ws', 'ctaPage', 'publishTo'),
             S.listItem()
     .title('Homepage')
     .icon(home)
@@ -156,7 +155,9 @@ S.list()
           .schemaType('wsHomepage')
         )
     ),
-            siteSpecificSchema('Page', 'ws', 'page', 'publishTo'),
+            siteSpecificSchema('Blog posts', 'ws', 'post', 'publishTo'),
+            siteSpecificSchema('CTA pages', 'ws', 'ctaPage', 'publishTo'),
+            siteSpecificSchema('Page builder', 'ws', 'page', 'publishTo'),
             S.divider(),
             siteSpecificSchema('Partners', 'ws', 'partner', 'publishTo'),
             siteSpecificSchema('Quotes', 'ws', 'quote', 'publishTo'),

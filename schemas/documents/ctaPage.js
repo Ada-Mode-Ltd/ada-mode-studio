@@ -69,7 +69,7 @@ export default {
             name: 'body',
             title: 'Body',
             type: 'blockContent',
-            group: 'content',
+            group: 'content', 
           },
           {
             name: 'form',

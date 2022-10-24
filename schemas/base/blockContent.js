@@ -1,5 +1,5 @@
 import { imageFields } from "../../utils/imageFields"
-import { highlightBlue, highlightGreen } from "../../utils/icons";
+import { highlightBlue, highlightGreen, paragraph } from "../../utils/icons";
 import React from 'react';
 /**
  * This is the schema definition for the rich text fields used for
@@ -20,12 +20,13 @@ const largeStatRender = props => (
 )
 
 const renderHighlightBlue = props => <span style={{ color: '#2276fc' }}>{props.children}</span>
-const renderHighlightGreen = props => <span style={{ color: '#2276fc' }}>{props.children}</span>
+const renderHighlightGreen = props => <span style={{ color: '#1fca51' }}>{props.children}</span>
 
 export default {
   title: 'Block Content',
   name: 'blockContent',
   type: 'object',
+  icon: paragraph,
   fields: [
     {
       name: 'content',
@@ -57,10 +58,6 @@ export default {
           decorators: [
             {title: 'Strong', value: 'strong'},
             {title: 'Emphasis', value: 'em'},
-            { title: 'Large Statistic', value: 'largeStat', blockEditor: {
-              icon: largeStatIcon,
-              render: largeStatRender
-            }},
             {
               title: 'Highlight Blue',
               value: 'highlightBlue',
@@ -115,7 +112,7 @@ export default {
       {
         type: 'video',
         type: 'videoId',
-        title: 'Video (YouTube/Vimeo)'
+        title: 'Video'
       }
       // TODO: Add internal linking references here
       

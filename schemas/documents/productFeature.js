@@ -238,10 +238,31 @@ export default {
         },
         prepare(selection) {
           const {type, titleL, titleM, titleS, mediaL, mediaM, mediaS} = selection
-          return Object.assign({}, selection,  {
-            title: type === 'large' ? titleL : type === 'medium' ? titleM : titleS,
+          let title;
+          let media
+
+          if (type === 'large') {
+            title = titleL
+            media = mediaL
+          } else if (type === 'medium') {
+            title = titleM
+            media = mediaM
+          } else if (type === 'small') {
+            title = titleS
+            media = mediaS
+          }
+
+          const block = (title || []).find(block => block._type === 'block')
+
+          return Object.assign({title, media}, selection,  {
+            title: block
+            ? block.children
+              .filter(child => child._type === 'span')
+              .map(span => span.text)
+              .join('')
+            : 'No title',
             subtitle: `Display type: ${type}`,
-            media: type === 'large' ? mediaL : type === 'medium' ? mediaM : mediaS,
+            media,
           })
         },
       },

@@ -1,10 +1,11 @@
-import { OITextLeftOverlap, OITextRightOverlap } from '../../utils/icons'
+import { OITextLeftOverlap, OITextRightOverlap, blockLayout } from '../../utils/icons'
 import { imageFields } from "../../utils/imageFields"
 
 export default {
     name: 'blockLayout',
     title: 'Block layout',
     type: 'object',
+    icon: blockLayout,
     fields: [
         {
             name: "layout",

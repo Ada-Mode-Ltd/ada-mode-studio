@@ -89,11 +89,12 @@ export default {
         select: {
           title: 'title',
           description: 'description',
+          open: 'open'
         },
         prepare(selection) {
-          const {description} = selection
+          const {description, open} = selection
           return Object.assign({}, selection, {
-            subtitle: description && `${description}`,
+            subtitle: `Status: ${open ? 'Open' : 'Closed'}`,
           })
         },
       },

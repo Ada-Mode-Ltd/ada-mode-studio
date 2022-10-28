@@ -78,17 +78,38 @@ export default {
           // Annotations can be any object structure – e.g. a link or a footnote.
           annotations: [
             {
-              title: 'URL',
+              title: 'External Link',
               name: 'link',
               type: 'object',
               fields: [
                 {
-                  title: 'URL',
+                  title: 'External Link',
                   name: 'href',
                   type: 'url',
                 },
               ],
             },
+            {
+              name: 'internalLink',
+              type: 'object',
+              title: 'Internal link',
+              fields: [
+                {
+                  name: 'reference',
+                  type: 'reference',
+                  title: 'Reference',
+                  to: [
+                    { type: 'page' },
+                    { type: 'post' },
+                    { type: 'ctaPage' },
+                    // other types you may want to link to
+                  ]
+                },
+              ],
+              options: {
+                disableNew: true,
+              }
+            }
           ],
         },
       },

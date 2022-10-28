@@ -21,6 +21,7 @@ import service from './documents/service'
 import productFeature from './documents/productFeature'
 import industry from './documents/industry'
 import wsHomepage from './documents/wsHomepage'
+import wsSettings from './documents/wsSettings'
 
 // Objects
 import formField from './objects/formField'
@@ -72,6 +73,7 @@ export default createSchema({
     job,
     page,
     wsHomepage,
+    wsSettings,
     
     // Components
     quote,

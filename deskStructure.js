@@ -164,6 +164,20 @@ S.list()
             S.divider(),
             siteSpecificSchemaRef('Product features', 'ws', 'productFeature', 'product', 'publishTo'),
             siteSpecificSchema('People', 'ws', 'person', 'publishTo'),
+            S.listItem()
+    .title('Settings')
+    .icon(home)
+    .child(
+      
+      S.documentTypeList('wsSettings')
+      // .title(``) 
+      .filter('_type == "wsSettings"')
+      .child(documentId =>
+        S.document()
+          .documentId(documentId)
+          .schemaType('wsSettings')
+        )
+    ),
       ])
     ),
     S.divider(),
@@ -254,5 +268,5 @@ S.list()
     ),
 
     // The rest of this document is from the original manual grouping in this series of articles
-    ...S.documentTypeListItems().filter(listItem => ![hiddenFromBase, 'service', 'industry', 'product', 'productFeature', 'parentStaff', 'blogPostCategory', 'ctaPage', 'job', 'page', 'post', 'partner', 'quote', 'person'].includes(listItem.getId())),
+    ...S.documentTypeListItems().filter(listItem => ![hiddenFromBase, 'service', 'industry', 'product', 'productFeature', 'parentStaff', 'blogPostCategory', 'ctaPage', 'job', 'page', 'post', 'partner', 'quote', 'person', 'wsHomepage', 'wsSettings'].includes(listItem.getId())),
   ])

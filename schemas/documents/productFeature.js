@@ -292,15 +292,19 @@ export default {
             media = mediaS
           }
 
-          const block = (title || []).find(block => block._type === 'block')
+          let block;
+          if (type === 'large') {
+            block = (title || []).find(block => block._type === 'block').children
+            .filter(child => child._type === 'span')
+            .map(span => span.text)
+            .join('')
+          } else {
+            block = title
+          }
+
 
           return Object.assign({title, media}, selection,  {
-            title: block
-            ? block.children
-              .filter(child => child._type === 'span')
-              .map(span => span.text)
-              .join('')
-            : 'No title',
+            title: block,
             subtitle: `Display type: ${type}`,
             media,
           })

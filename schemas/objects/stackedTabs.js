@@ -69,12 +69,42 @@ export default {
                   ]
                 },
                 {
+                  name: 'linkType',
+                  title: 'Link type',
+                  type: 'string',
+                  options: {
+                    list: [
+                      {title: 'Internal', value: 'internal'},
+                      {title: 'External', value: 'external'},
+                    ],
+                  }
+                },
+                {
                   name: 'url',
                   title: 'Url',
                   type: 'url',
-                  validation: Rule => [
-                    Rule.required()
-                  ]
+                  hidden: ({parent}) => parent.linkType !== 'external',
+                },
+                {
+                  name: 'internalLink',
+                  type: 'object',
+                  title: 'Internal link',
+                  hidden: ({parent}) => parent.linkType !== 'internal',
+                  fields: [
+                    {
+                      name: 'reference',
+                      type: 'reference',
+                      title: 'Reference',
+                      to: [
+                        { type: 'page' },
+                        { type: 'ctaPage' },
+                      ]
+                    },
+                  ],
+                  options: {
+                    disableNew: true,
+                    filter: `publishTo == "ws" && !(_id in path("drafts.**"))`
+                  }
                 }]
             },
     ],

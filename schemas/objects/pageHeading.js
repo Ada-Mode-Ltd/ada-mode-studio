@@ -80,9 +80,9 @@ export default {
             fields: imageFields,
           },
           {
-            title: 'Youtube video',
-            name: 'youtubeVideo',
-            type: 'url',
+            title: 'Video',
+            name: 'video',
+            type: 'videoId',
           }],
         },
     ],

@@ -108,6 +108,7 @@ export default {
               ],
               options: {
                 disableNew: true,
+                filter: `(publishTo == "ws" || "ws" in publishTo) && !(_id in path("drafts.**"))`
               }
             }
           ],

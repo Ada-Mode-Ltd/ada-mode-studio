@@ -73,8 +73,8 @@ export default {
               },
               {
                 name: 'video',
-                title: 'YouTube URL',
-                type: 'url',
+                title: 'Video',
+                type: 'videoId',
                 hidden: ({parent}) => parent?.mediaType !== 'video',
               }
             ]

@@ -178,12 +178,52 @@ export default {
               type: 'string',
             },
             {
+              name: 'linkType',
+              title: 'Link type',
+              type: 'string',
+              options: {
+                list: [
+                  {title: 'Internal', value: 'internal'},
+                  {title: 'External', value: 'external'},
+                ],
+              }
+            },
+            {
               name: 'url',
               title: 'Url',
               type: 'url',
-              // TODO: Create a way to link to internal pages
+              hidden: ({parent}) => parent.linkType !== 'external',
             },
+            {
+              name: 'internalLink',
+              type: 'object',
+              title: 'Internal link',
+              hidden: ({parent}) => parent.linkType !== 'internal',
+              fields: [
+                {
+                  name: 'reference',
+                  type: 'reference',
+                  title: 'Reference',
+                  to: [
+                    { type: 'page' },
+                    { type: 'ctaPage' },
+                  ],
+                  options: {
+                    filter: `publishTo == "ws" && !(_id in path("drafts.**"))`,
+                    collapsed: false,
+                    editModal: 'dialog',
+                  }
+                },
+              ],
+              options: {
+                collapsed: false,
+                disableNew: true,
+              }
+            }
           ],
+          options: {
+            collapsed: false,
+          }
         },
         // Fields for medium sized feature blocks
         {

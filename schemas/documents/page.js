@@ -89,7 +89,7 @@ export default {
               { type: 'blockContent' },
               { type: 'sectionHeading' },
               { type: 'blockLayout' },
-              { type: 'productFeature' },
+              { type: 'productFeatures' },
               { type: 'reference', to: { type: 'quote'}, title: 'Quote' },
               { type: 'quoteCarousel' },
               { type: 'people' },

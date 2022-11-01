@@ -229,13 +229,35 @@ export default {
         {
             name: 'mediumTitle',
             title: 'Medium title',
-            type: 'string',
+            type: 'array', 
+          of: [{type: 'block', 
+          styles: [
+            {title: 'Normal', value: 'normal'},
+          ],
+          lists: [
+          ],
+          marks: {
+            decorators: [],
+            annotations: []
+          }},
+            ],
             fieldset: 'medium'
         },
         {
           name: 'mediumText',
           title: 'Medium text',
-          type: 'text',
+          type: 'array', 
+          of: [{type: 'block', 
+          styles: [
+            {title: 'Normal', value: 'normal'},
+          ],
+          lists: [
+          ],
+          marks: {
+            decorators: [],
+            annotations: []
+          }},
+            ],
           fieldset: 'medium'
         },
         {
@@ -249,13 +271,35 @@ export default {
         {
             name: 'smallTitle',
             title: 'Small title',
-            type: 'string',
+            type: 'array', 
+          of: [{type: 'block', 
+          styles: [
+            {title: 'Normal', value: 'normal'},
+          ],
+          lists: [
+          ],
+          marks: {
+            decorators: [],
+            annotations: []
+          }},
+            ],
             fieldset: 'small'
         },
         {
           name: 'smallText',
           title: 'Small text',
-          type: 'text',
+          type: 'array', 
+          of: [{type: 'block', 
+          styles: [
+            {title: 'Normal', value: 'normal'},
+          ],
+          lists: [
+          ],
+          marks: {
+            decorators: [],
+            annotations: []
+          }},
+            ],
           fieldset: 'small'
         },
         {
@@ -292,15 +336,12 @@ export default {
             media = mediaS
           }
 
-          let block;
-          if (type === 'large') {
+          let block
             block = (title || []).find(block => block._type === 'block').children
             .filter(child => child._type === 'span')
             .map(span => span.text)
             .join('')
-          } else {
-            block = title
-          }
+          
 
 
           return Object.assign({title, media}, selection,  {

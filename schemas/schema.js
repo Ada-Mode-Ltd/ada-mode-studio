@@ -38,6 +38,7 @@ import people from './objects/people'
 import rowOfLogos from './objects/rowOfLogos'
 import careers from './objects/careers'
 import videoId from './objects/video'
+import productFeatures from './objects/productFeatures'
 // import parentPost from './parentPost'
 // import childPost from './childPost'
 // import author from './author'
@@ -90,6 +91,7 @@ export default createSchema({
     rowOfLogos,
     careers,
     videoId,
+    productFeatures,
     
     // Other content
     partner,

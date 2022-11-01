@@ -156,9 +156,10 @@ export default {
                   {title: 'Left', value: 'left'},
                   {title: 'Right', value: 'right'},
                   {title: 'Down', value: 'down'},
+                  {title: 'Up', value: 'up'},
                 ],
               },
-              description: 'This will offset the image and generate a dark background to create visual effect.',
+              description: 'This will offset the image in the direction specified, and a dark background will be placed behind it.',
             },
           ],
           validation: Rule => Rule.custom((value, context) => {

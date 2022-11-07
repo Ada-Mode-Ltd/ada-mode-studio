@@ -276,6 +276,7 @@ export default {
             type: 'array', 
           of: [{type: 'block', 
           styles: [
+            {title: 'H3', value: 'h3'},
             {title: 'Normal', value: 'normal'},
           ],
           lists: [
@@ -293,7 +294,6 @@ export default {
           type: 'array', 
           of: [{type: 'block', 
           styles: [
-            {title: 'H3', value: 'h3'},
             {title: 'Normal', value: 'normal'},
           ],
           lists: [

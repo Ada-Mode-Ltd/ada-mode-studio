@@ -1,3 +1,6 @@
 {
-  "apiId": "<YOUR-NETLIFY-API-OR-SITE-ID-HERE>"
+    "apiId": "6426d52e-aca8-48ff-a674-0d669ff34119",
+    "auth": {
+        "oauthClientId": "hcAfjUOBhCqh_w0PJ5mMmvF6MfXIG0NXV9O0K0I8coc"
+    }
 }

@@ -13,7 +13,8 @@
     "@sanity/default-layout",
     "@sanity/default-login",
     "@sanity/desk-tool",
-    "visual-options"
+    "visual-options",
+    "netlify-deploy-status-badge"
   ],
   "env": {
     "development": {

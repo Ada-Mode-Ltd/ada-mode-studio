@@ -194,37 +194,31 @@ export default {
               title: 'Url',
               type: 'url',
               hidden: ({parent}) => parent.linkType !== 'external',
+              validation: Rule => Rule.custom((value, context) => {
+                const { parent } = context
+                return parent.linkType === 'external' && !value ? 'An external url is required.' : true
+              }),
             },
             {
               name: 'internalLink',
-              type: 'object',
+              type: 'reference',
               title: 'Internal link',
               hidden: ({parent}) => parent.linkType !== 'internal',
-              fields: [
-                {
-                  name: 'reference',
-                  type: 'reference',
-                  title: 'Reference',
-                  to: [
-                    { type: 'page' },
-                    { type: 'ctaPage' },
-                  ],
-                  options: {
-                    filter: `publishTo == "ws" && !(_id in path("drafts.**"))`,
-                    collapsed: false,
-                    editModal: 'dialog',
-                  }
-                },
+              to: [
+                { type: 'page' },
+                { type: 'ctaPage' },
               ],
               options: {
-                collapsed: false,
                 disableNew: true,
-              }
+                filter: `publishTo == "ws" && !(_id in path("drafts.**"))`,
+
+              },
+              validation: Rule => Rule.custom((value, context) => {
+                const { parent } = context
+                return parent.linkType === 'internal' && !value ? 'Please link to a page.' : true
+              }), 
             }
           ],
-          options: {
-            collapsed: false,
-          }
         },
         // Fields for medium sized feature blocks
         {

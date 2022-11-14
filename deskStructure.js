@@ -118,8 +118,8 @@ S.list()
       .id('am')
       .items([
         siteSpecificSchema('Blog posts', 'am', 'post', 'publishTo'),
+        siteSpecificSchema('Page builder', 'am', 'page', 'publishTo'),
         siteSpecificSchema('Job listings', 'am', 'job', 'publishTo', {field: 'open', direction: 'desc'}),
-        siteSpecificSchema('Page', 'am', 'page', 'publishTo'),
         S.divider(),
         siteSpecificSchema('Partners', 'am', 'partner', 'publishTo'),
         siteSpecificSchema('Quotes', 'am', 'quote', 'publishTo'),
@@ -142,22 +142,23 @@ S.list()
           .id('ws')
           .items([
             S.listItem()
-    .title('Homepage')
-    .icon(home)
-    .child(
-      
-      S.documentTypeList('wsHomepage')
-      // .title(``) 
-      .filter('_type == "wsHomepage"')
+            .title('Homepage')
+            .icon(home)
+            .child(
+              
+              S.documentTypeList('wsHomepage')
+              // .title(``) 
+              .filter('_type == "wsHomepage"')
       .child(documentId =>
         S.document()
           .documentId(documentId)
           .schemaType('wsHomepage')
-        )
-    ),
-            siteSpecificSchema('Blog posts', 'ws', 'post', 'publishTo'),
-            siteSpecificSchema('CTA pages', 'ws', 'ctaPage', 'publishTo'),
-            siteSpecificSchema('Page builder', 'ws', 'page', 'publishTo'),
+          )
+          ),
+          siteSpecificSchema('Blog posts', 'ws', 'post', 'publishTo'),
+          siteSpecificSchema('CTA pages', 'ws', 'ctaPage', 'publishTo'),
+          siteSpecificSchema('Page builder', 'ws', 'page', 'publishTo'),
+          siteSpecificSchema('Job listings', 'ws', 'job', 'publishTo', {field: 'open', direction: 'desc'}),
             S.divider(),
             siteSpecificSchema('Partners', 'ws', 'partner', 'publishTo'),
             siteSpecificSchema('Quotes', 'ws', 'quote', 'publishTo'),
@@ -212,6 +213,56 @@ S.list()
           S.document()
           .documentId(documentId)
           .schemaType('blogPostCategory')
+        )
+      ),
+    ])),
+    S.divider(),
+    S.listItem()
+    .title('Job listings')
+    .icon(briefcase)
+    .child(
+      S.list()
+       .title('All job listings')
+       .items([
+      S.listItem()
+      .title('All job listings')
+      .icon(write)
+      .child(
+        S.documentTypeList('job')
+        // .title(``) 
+        .filter('_type == "job"')
+        .defaultOrdering([{field: 'open', direction: 'desc'}])
+        .child(documentId =>
+          S.document()
+          .documentId(documentId)
+          .schemaType('job')
+        )
+      ),
+      S.divider(),
+      S.listItem()
+      .title('Open Listings')
+      .icon(briefcase)
+      .child(
+        S.documentTypeList('job')
+        .title('Open Jobs')
+        .filter('_type == "job" && open == true')
+        .child(documentId =>
+          S.document()
+          .documentId(documentId)
+          .schemaType('job')
+        )
+      ),
+      S.listItem()
+      .title('Closed Listings')
+      .icon(briefcase)
+      .child(
+        S.documentTypeList('job')
+        .title('Open Jobs')
+        .filter('_type == "job" && (open == false || !defined(open))')
+        .child(documentId =>
+          S.document()
+          .documentId(documentId)
+          .schemaType('job')
         )
       ),
     ])),

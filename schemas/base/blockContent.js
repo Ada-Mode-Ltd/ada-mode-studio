@@ -100,7 +100,7 @@ export default {
                   title: 'Reference',
                   to: [
                     { type: 'page' },
-                    { type: 'post' },
+                    // { type: 'post' },
                     { type: 'ctaPage' },
                     // other types you may want to link to
                   ]

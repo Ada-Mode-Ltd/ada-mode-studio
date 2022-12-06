@@ -1,5 +1,5 @@
 import { imageFields } from "../../utils/imageFields"
-import { stack } from "../../utils/icons"
+import { externalLink, internalLink, stack } from "../../utils/icons"
 import React from 'react';
 
 export default {
@@ -83,6 +83,7 @@ export default {
                   name: 'url',
                   title: 'Url',
                   type: 'url',
+                  icon: externalLink,
                   hidden: ({parent}) => parent.linkType !== 'external',
                   // If the link type is external, this field is required
                   validation: Rule => Rule.custom((value, context) => {
@@ -94,6 +95,7 @@ export default {
                   name: 'internalLink',
                   type: 'reference',
                   title: 'Internal link',
+                  icon: internalLink,
                   hidden: ({parent}) => parent.linkType !== 'internal',
                   to: [
                     { type: 'page' },

@@ -93,7 +93,7 @@ export default {
               { type: 'reference', to: { type: 'quote'}, title: 'Quote' },
               { type: 'quoteCarousel' },
               { type: 'people' },
-              { type: 'service' },
+              // { type: 'service' },
               { type: 'careers' },
               { type: 'rowOfLogos' },
               { type: 'stackedTabs' },

@@ -2,6 +2,37 @@
 import S from '@sanity/desk-tool/structure-builder'
 import { windscope, adaMode  } from './utils/logos';
 import { keyboard, partner, note, briefcase, quote, click, write, person, team, industry, confetti, productTM, category, home } from './utils/icons';
+import Iframe from 'sanity-plugin-iframe-pane'
+
+
+const baseUrl = 'https://deploy-preview-4--verdant-cucurucho-b5ae26.netlify.app'
+
+const resolveProductionUrl = (doc) => {
+  return `${baseUrl}/preview/${doc.slug.current}/`
+}
+
+const componentPreview = (doc) => {
+  return `${baseUrl}/preview/${doc._type}/${doc._id}/`
+}
+
+const pagePreview = (doc) => {
+  let type = 'page'
+
+  if (doc._type === 'wsHomepage') {
+    type = 'homepage'
+  } else if (doc._type === 'ctaPage') {
+    type = 'cta'
+  } else if (doc._type === 'post') {
+    type = 'post'
+  } else if (doc._type === 'job') {
+    type = 'job'
+  }
+
+  return `${baseUrl}/${type}/preview/${doc._id}/`
+}
+
+const componentPreviewTypes = ['person', 'productFeature', 'quote']
+const pagePreviewTypes = ['wsHomepage', 'page', 'ctaPage', 'job', 'post']
 
 const hiddenFromBase = S.documentTypeListItems().filter(item => item.getId().startsWith('am') || item.getId().startsWith('ws')).map(item => item.getId())
 
@@ -60,6 +91,22 @@ const returnIcon = (schemaType) => {
 
 const siteSpecificSchema = (title, site, schemaType, validationField, orderBy = {field: '_updatedAt', direction: 'desc'}) => {
   const company = site === 'ws' ? 'Windscope' : 'Ada Mode';
+  let views = [S.view.form()]
+  if (componentPreviewTypes.includes(schemaType)) {
+    views.push(S.view
+      .component(Iframe)
+      .options({
+        url: (doc) => componentPreview(doc),
+      })
+      .title('Preview'))
+    } else if (pagePreviewTypes.includes(schemaType)) {
+      views.push(S.view
+        .component(Iframe)
+        .options({
+          url: (doc) => pagePreview(doc),
+        })
+        .title('Preview'))
+    }
 
   return S.listItem()
     .title(title)
@@ -77,6 +124,7 @@ const siteSpecificSchema = (title, site, schemaType, validationField, orderBy = 
         S.document()
         .documentId(documentId)
         .schemaType(schemaType)
+        .views(views)
       )
     )
 }
@@ -84,6 +132,23 @@ const siteSpecificSchema = (title, site, schemaType, validationField, orderBy = 
 // Filters schema documents based on a reference field
 const siteSpecificSchemaRef = (title, site, schemaType, refSchema, validationField) => {
   const company = site === 'ws' ? 'Windscope' : 'Ada Mode';
+
+  let views = [S.view.form()]
+  if (componentPreviewTypes.includes(schemaType)) {
+    views.push(S.view
+      .component(Iframe)
+      .options({
+        url: (doc) => componentPreview(doc),
+      })
+      .title('Preview'))
+    } else if (pagePreviewTypes.includes(schemaType)) {
+      views.push(S.view
+        .component(Iframe)
+        .options({
+          url: (doc) => pagePreview(doc),
+        })
+        .title('Preview'))
+    }
 
   return S.listItem()
     .title(title)
@@ -100,6 +165,7 @@ const siteSpecificSchemaRef = (title, site, schemaType, refSchema, validationFie
         S.document()
         .documentId(documentId)
         .schemaType(schemaType)
+        .views(views)
       )
     )
 }
@@ -153,6 +219,15 @@ S.list()
         S.document()
           .documentId(documentId)
           .schemaType('wsHomepage')
+          .views([
+            S.view.form(),
+            S.view
+              .component(Iframe)
+              .options({
+                url: (doc) => pagePreview(doc),
+              })
+              .title('Preview')
+          ])
           )
           ),
           siteSpecificSchema('Blog posts', 'ws', 'post', 'publishTo'),

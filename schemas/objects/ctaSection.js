@@ -75,6 +75,7 @@ export default {
                 name: 'video',
                 title: 'Video',
                 type: 'videoId',
+                description: "Link to a video on Vimeo or YouTube.",
                 hidden: ({parent}) => parent?.mediaType !== 'video',
               }
             ]
@@ -95,8 +96,11 @@ export default {
                   name: 'link',
                   title: 'Link',
                   type: 'url',
+                  validation: Rule => Rule.uri({
+                    scheme: ['http', 'https', 'mailto', 'tel']
+                  })
                 },
-            ],
+            ], 
           }],
           validation: Rule => [
             Rule.required()

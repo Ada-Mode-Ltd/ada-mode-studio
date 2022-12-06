@@ -292,6 +292,25 @@ export const scales = () => (
 </svg>
 )
 
+export const externalLink = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-external-link" width="22" height="22" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M11 7h-5a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-5" />
+  <line x1="10" y1="14" x2="20" y2="4" />
+  <polyline points="15 4 20 4 20 9" />
+</svg>
+)
+
+export const internalLink = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-symlink" width="22" height="22" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 21v-4a3 3 0 0 1 3 -3h5" />
+  <path d="M9 17l3 -3l-3 -3" />
+  <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+  <path d="M5 11v-6a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2h-9.5" />
+</svg>
+)
+
 // For CTA Section
 export const OIText = () => <svg viewBox="0 0 793 528" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="1.5"><g stroke="darkslategrey"><path fill="#fff" strokeWidth="25" d="M12.534 12.991h767.933v502.017H12.534z"/><path d="M117.542 125.78s562.598-1.433 560.772-1.765M117.542 216.456s562.598-1.433 560.772-1.765M117.542 307.474s562.598-1.433 560.772-1.766M117.542 398.809s562.598-1.433 560.772-1.766" fill="none" strokeWidth="20"/></g></svg>
 

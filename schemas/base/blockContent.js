@@ -1,5 +1,5 @@
 import { imageFields } from "../../utils/imageFields"
-import { highlightBlue, highlightGreen, paragraph } from "../../utils/icons";
+import { highlightBlue, highlightGreen, paragraph, externalLink, internalLink } from "../../utils/icons";
 import React from 'react';
 /**
  * This is the schema definition for the rich text fields used for
@@ -81,6 +81,7 @@ export default {
               title: 'External Link',
               name: 'link',
               type: 'object',
+              icon: externalLink,
               fields: [
                 {
                   title: 'External Link',
@@ -93,6 +94,7 @@ export default {
               name: 'internalLink',
               type: 'object',
               title: 'Internal link',
+              icon: internalLink,
               fields: [
                 {
                   name: 'reference',

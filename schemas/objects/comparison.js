@@ -7,15 +7,15 @@ export default {
     icon: scales,
     fields: [
         {
-            name: 'title',
-            title: 'Section title',
-            type: 'string',
-          },
-        {
           name: 'left',
           title: 'Left side content',
           type: 'object',
           fields: [
+            {
+              name: 'title',
+              title: 'Title',
+              type: 'string',
+            },
             {
               name: 'icon',
               title: 'Icon',
@@ -32,7 +32,7 @@ export default {
               name: 'items',
               title: 'Items',
               type: 'array',
-              of: [{ type: 'text' }],
+              of: [{ type: 'string' }],
             },
           ],
           },
@@ -41,6 +41,11 @@ export default {
             title: 'Right side content',
             type: 'object',
             fields: [
+              {
+                name: 'title',
+                title: 'Title',
+                type: 'string',
+              },
               {
                 name: 'icon',
                 title: 'Icon',
@@ -57,7 +62,7 @@ export default {
                 name: 'items',
                 title: 'Items',
                 type: 'array',
-                of: [{ type: 'text' }],
+                of: [{ type: 'string' }],
               },
             ],
             }
@@ -65,12 +70,13 @@ export default {
     // Todo: Need to fix up this preview
     preview: {
         select: {
-          title: 'title',
+          left: 'left.title',
+          right: 'right.title',
           // media: 'photo',
         },
         prepare(selection) {
           return Object.assign({}, selection, {
-            title: title || 'Comparison table',
+            title: `${selection.left} vs ${selection.right}`,
           })
         },
       },

@@ -5,7 +5,7 @@ import { keyboard, partner, note, briefcase, quote, click, write, person, team, 
 import Iframe from 'sanity-plugin-iframe-pane'
 
 
-const baseUrl = 'https://deploy-preview-4--verdant-cucurucho-b5ae26.netlify.app'
+const baseUrl = 'https://verdant-cucurucho-b5ae26.netlify.app'
 
 const resolveProductionUrl = (doc) => {
   return `${baseUrl}/preview/${doc.slug.current}/`

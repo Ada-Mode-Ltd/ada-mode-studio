@@ -105,13 +105,19 @@ export default {
                     // { type: 'post' },
                     { type: 'ctaPage' },
                     // other types you may want to link to
-                  ]
+                  ],
+                  options: {
+                    disableNew: true,
+                    filter: ({document}) => {
+                      const publishTo = document?.publishTo
+                      return {filter: `(publishTo == "${publishTo}" || "${publishTo}" in publishTo) && !(_id in path("drafts.**"))`}
+                    }
+                  }
                 },
               ],
               options: {
-                disableNew: true,
-                filter: `(publishTo == "ws" || "ws" in publishTo) && !(_id in path("drafts.**"))`
-              }
+                editModal: 'dialogue',
+              },
             }
           ],
         },

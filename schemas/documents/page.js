@@ -1,4 +1,20 @@
 import { slugify } from "../../utils/schema"
+import { client } from "../../utils/sanity"
+
+async function isUniqueAcrossAllDocuments(slug, context) {
+  const {document} = context
+  const publishTo = document?.publishTo
+  const id = document._id.replace(/^drafts\./, '')
+  const params = {
+    draft: `drafts.${id}`,
+    published: id,
+    slug,
+  }
+  const query = `!defined(*[!(_id in [$draft, $published]) && slug.current == $slug  && (publishTo == "${publishTo}" || "${publishTo}" in publishTo)][0]._id)`
+  const result = await client.fetch(query, params)
+  console.log('result', result)
+  return result
+}
 
 export default {
     name: 'page',
@@ -11,13 +27,13 @@ export default {
             default: true,
         }, 
         {
+          name: 'publishing',
+          title: 'Publishing details',
+          // default: true,
+        },
+        {
             name: 'content',
             title: 'Content',
-            // default: true,
-          },
-          {
-            name: 'publishing',
-            title: 'Publishing details',
             // default: true,
           },
     ],
@@ -36,6 +52,14 @@ export default {
             validation: Rule => [
               Rule.required()
             ],
+          },
+          {
+            name: 'policyPage',
+            title: 'Is policy page?',
+            type: 'boolean',
+            group: 'publishing',
+            description: "If this is a policy page, it will have /policies/ added to the start of the URL path.",
+            hidden: ({parent}) => parent.publishTo !== 'am',
           },
           {
             name: 'publishedAt',
@@ -75,6 +99,7 @@ export default {
               source: 'title',
               maxLength: 96,
               slugify: slugify,
+              isUnique: isUniqueAcrossAllDocuments
             },
             validation: Rule => [
               Rule.required()

@@ -63,12 +63,14 @@ export default {
         select: {
           title: 'name',
           media: 'photo',
-          order: 'displayOrder'
+          order: 'displayOrder',
+          company: 'publishTo',
         },
         prepare(selection) {
-          const { order } = selection
+          const { order, company } = selection
+          const comp = company[0] === 'am' ? 'Ada Mode' : 'Windscope'
           return Object.assign({}, selection, {
-            subtitle: order ? `Display order: ${order}` : ''
+            subtitle: order ? `${comp} | Display order: ${order}` : comp
           })
         },
       },

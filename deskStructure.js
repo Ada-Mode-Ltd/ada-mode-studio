@@ -191,7 +191,7 @@ S.list()
         siteSpecificSchema('Quotes', 'am', 'quote', 'publishTo'),
         S.divider(),
         siteSpecificSchemaRef('Product features', 'am', 'productFeature', 'product', 'publishTo'),
-        siteSpecificSchema('People', 'am', 'person', 'publishTo'),
+        siteSpecificSchema('People', 'am', 'person', 'publishTo', {field: 'displayOrder', direction: 'asc'}),
         siteSpecificSchema('Industries', 'am', 'industry', 'publishTo'),
         siteSpecificSchema('Services', 'am', 'service', 'publishTo'),
         // S.documentTypeListItems().filter(
@@ -239,7 +239,7 @@ S.list()
             siteSpecificSchema('Quotes', 'ws', 'quote', 'publishTo'),
             S.divider(),
             siteSpecificSchemaRef('Product features', 'ws', 'productFeature', 'product', 'publishTo'),
-            siteSpecificSchema('People', 'ws', 'person', 'publishTo'),
+            siteSpecificSchema('People', 'ws', 'person', 'publishTo', {field: 'displayOrder', direction: 'asc'}),
             S.listItem()
     .title('Settings')
     .icon(home)

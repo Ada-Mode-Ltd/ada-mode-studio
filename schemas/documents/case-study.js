@@ -139,6 +139,13 @@ export default {
       title: 'Slides',
       type: 'file',
       group: 'content',
+      fields: [
+        {
+          name: 'title',
+          title: 'Title',
+          type: 'string',
+        },
+      ]
     },
   ],
 

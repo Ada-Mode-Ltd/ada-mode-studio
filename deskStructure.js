@@ -41,7 +41,7 @@ const returnIcon = (schemaType) => {
     return partner;
   }
 
-  if (schemaType === 'post') {
+  if (schemaType === 'post' || schemaType === 'caseStudy') {
     return write;
   }
 
@@ -184,6 +184,7 @@ S.list()
       .id('am')
       .items([
         siteSpecificSchema('Blog posts', 'am', 'post', 'publishTo'),
+        siteSpecificSchema('Case study', 'am', 'caseStudy', 'publishTo'),
         siteSpecificSchema('Page builder', 'am', 'page', 'publishTo'),
         siteSpecificSchema('Job listings', 'am', 'job', 'publishTo', {field: 'open', direction: 'desc'}),
         S.divider(),

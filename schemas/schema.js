@@ -7,6 +7,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 // We import object and document schemas
 // Pages type schemas
 import post from './documents/post'
+import caseStudy from './documents/case-study'
 import ctaPage from './documents/ctaPage'
 import job from './documents/job'
 import page from './documents/page'
@@ -70,6 +71,7 @@ export default createSchema({
     
     // Documents
     post,
+    caseStudy,
     ctaPage,
     job,
     page,

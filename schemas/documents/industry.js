@@ -42,7 +42,7 @@ export default {
     ],
     preview: {
         select: {
-          title: 'name',
+          title: 'title',
           media: 'logo',
         },
         prepare(selection) {

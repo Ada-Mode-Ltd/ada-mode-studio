@@ -23,6 +23,7 @@ import productFeature from './documents/productFeature'
 import industry from './documents/industry'
 import wsHomepage from './documents/wsHomepage'
 import wsSettings from './documents/wsSettings'
+import amSettings from './documents/amSettings'
 
 // Objects
 import formField from './objects/formField'
@@ -77,6 +78,7 @@ export default createSchema({
     page,
     wsHomepage,
     wsSettings,
+    amSettings,
     
     // Components
     quote,

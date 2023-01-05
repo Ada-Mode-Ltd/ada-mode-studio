@@ -195,6 +195,20 @@ S.list()
         siteSpecificSchema('People', 'am', 'person', 'publishTo', {field: 'displayOrder', direction: 'asc'}),
         siteSpecificSchema('Industries', 'am', 'industry', 'publishTo'),
         siteSpecificSchema('Services', 'am', 'service', 'publishTo'),
+        S.listItem()
+        .title('Settings')
+        .icon(home)
+        .child(
+          
+          S.documentTypeList('amSettings')
+          // .title(``) 
+          .filter('_type == "amSettings"')
+          .child(documentId =>
+            S.document()
+              .documentId(documentId)
+              .schemaType('amSettings')
+            )
+        ),
         // S.documentTypeListItems().filter(
           //     item => item.getSchemaType().name.startsWith('am-')
           //   )

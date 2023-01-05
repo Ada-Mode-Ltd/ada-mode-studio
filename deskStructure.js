@@ -183,6 +183,29 @@ S.list()
       .title('Content')
       .id('am')
       .items([
+        S.listItem()
+            .title('Homepage')
+            .icon(home)
+            .child(
+              
+              S.documentTypeList('amHomepage')
+              // .title(``) 
+              .filter('_type == "amHomepage"')
+      .child(documentId =>
+        S.document()
+          .documentId(documentId)
+          .schemaType('amHomepage')
+          .views([
+            S.view.form(),
+            S.view
+              .component(Iframe)
+              .options({
+                url: (doc) => pagePreview(doc),
+              })
+              .title('Preview')
+          ])
+          )
+          ),
         siteSpecificSchema('Blog posts', 'am', 'post', 'publishTo'),
         siteSpecificSchema('Case study', 'am', 'caseStudy', 'publishTo'),
         siteSpecificSchema('Page builder', 'am', 'page', 'publishTo'),

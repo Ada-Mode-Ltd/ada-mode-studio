@@ -22,6 +22,7 @@ import service from './documents/service'
 import productFeature from './documents/productFeature'
 import industry from './documents/industry'
 import wsHomepage from './documents/wsHomepage'
+import amHomepage from './documents/amHomepage'
 import wsSettings from './documents/wsSettings'
 import amSettings from './documents/amSettings'
 
@@ -77,6 +78,7 @@ export default createSchema({
     job,
     page,
     wsHomepage,
+    amHomepage,
     wsSettings,
     amSettings,
     

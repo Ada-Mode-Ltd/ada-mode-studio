@@ -1,5 +1,6 @@
 import { slugify } from "../../utils/schema"
 import { client } from "../../utils/sanity"
+import { write } from "../../utils/icons"
 
 async function isUniqueAcrossAllDocuments(slug, context) {
   const {document} = context
@@ -119,6 +120,58 @@ export default {
               { type: 'quoteCarousel' },
               { type: 'people' },
               // { type: 'service' },
+              // If publishTo is Ada Mode, show the following blocks
+              {
+                type: 'object',
+                name: 'caseStudies',
+                title: 'Case studies',
+                icon: write,
+                hidden: ({parent}) => parent.publishTo !== 'am',
+                fields: [
+                  {
+                    name: 'title',
+                    title: 'Title',
+                    type: 'string',
+                    initialValue: 'Our work'
+                  },
+                  {
+                    name: 'showLatest',
+                    title: 'Show latest',
+                    type: 'boolean',
+                    description: 'If checked, the latest 3 case studies will be shown. Otherwise, the case studies below will be shown.',
+                  },
+                  {
+                    name: 'caseStudies',
+                    title: 'Case studies',
+                    type: 'array',
+                    hidden: ({parent}) => parent.showLatest,
+                    of: [
+                      {
+                        type: 'reference',
+                        to: {type: 'caseStudy'},
+                        title: 'Case study',
+                      }
+                    ],
+                    validation: Rule => [
+                      Rule.min(1)
+                        .max(3)
+                        .error('Required field with at least 1 and at most 3 entries.'),
+                      Rule.unique()
+                    ]
+                  }, 
+                ],
+                preview: {
+                  select: {
+                    title: 'title',
+                  },
+                  prepare({title}) {
+                    return {
+                      title: title,
+                      subtitle: 'Case studies',
+                    }
+                  }
+              },
+            },
               { type: 'careers' },
               { type: 'rowOfLogos' },
               { type: 'stackedTabs' },

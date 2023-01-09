@@ -217,7 +217,7 @@ S.list()
         siteSpecificSchemaRef('Product features', 'am', 'productFeature', 'product', 'publishTo'),
         siteSpecificSchema('People', 'am', 'person', 'publishTo', {field: 'displayOrder', direction: 'asc'}),
         siteSpecificSchema('Industries', 'am', 'industry', 'publishTo'),
-        siteSpecificSchema('Services', 'am', 'service', 'publishTo'),
+        // siteSpecificSchema('Services', 'am', 'service', 'publishTo'),
         S.listItem()
         .title('Settings')
         .icon(home)

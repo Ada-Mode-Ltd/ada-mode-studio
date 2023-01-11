@@ -1,6 +1,6 @@
 import { slugify } from "../../utils/schema"
 import { client } from "../../utils/sanity"
-import { write } from "../../utils/icons"
+import { industry, write } from "../../utils/icons"
 
 async function isUniqueAcrossAllDocuments(slug, context) {
   const {document} = context
@@ -168,6 +168,55 @@ export default {
                     return {
                       title: title,
                       subtitle: 'Case studies',
+                    }
+                  }
+              },
+            },
+              {
+                type: 'object',
+                name: 'industries',
+                title: 'Industries',
+                icon: industry,
+                hidden: ({parent}) => parent.publishTo !== 'am',
+                fields: [
+                  {
+                    name: 'title',
+                    title: 'Title',
+                    type: 'string',
+                    initialValue: 'Industries we work with'
+                  },
+                  {
+                    name: 'showAll',
+                    title: 'Show all',
+                    type: 'boolean',
+                  },
+                  {
+                    name: 'industries',
+                    title: 'Industries',
+                    type: 'array',
+                    hidden: ({parent}) => parent.showAll,
+                    of: [
+                      {
+                        type: 'reference',
+                        to: {type: 'industry'},
+                        title: 'Industruy',
+                      }
+                    ],
+                    validation: Rule => [
+                      Rule.min(1)
+                        .error('Required field with at least 1 entry.'),
+                      Rule.unique()
+                    ]
+                  }, 
+                ],
+                preview: {
+                  select: {
+                    title: 'title',
+                  },
+                  prepare({title}) {
+                    return {
+                      title: title || 'Industries',
+                      subtitle: 'Industries',
                     }
                   }
               },

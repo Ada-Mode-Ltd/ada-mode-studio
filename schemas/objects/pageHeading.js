@@ -10,6 +10,13 @@ export default {
     type: 'object',
     icon: pageHeading,
     fields: [
+      {
+        name: 'logo',
+        title: 'Logo',
+        type: 'image',
+        description: 'Optional. A small logo that will appear above the title.',
+        hidden: ({ document }) => document?.publishTo !== 'am',
+      },
         {
             name: 'title',
             title: 'Title',

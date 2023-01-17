@@ -1,6 +1,6 @@
 import { slugify } from "../../utils/schema"
 import { client } from "../../utils/sanity"
-import { industry, write } from "../../utils/icons"
+import { industry, write, stack } from "../../utils/icons"
 
 async function isUniqueAcrossAllDocuments(slug, context) {
   const {document} = context
@@ -225,7 +225,45 @@ export default {
               { type: 'rowOfLogos' },
               { type: 'stackedTabs' },
               { type: 'comparison' },
-              { type: 'ctaSection' },
+              {
+                name: 'accordion',
+                title: 'Accordion',
+                type: 'object',
+                icon: stack,
+                hidden: ({parent}) => parent.publishTo !== 'am',
+                fields: [
+                  {
+                    name: 'title',
+                    title: 'Title',
+                    type: 'string',
+                  },
+                  {
+                    name: 'list',
+                    title: 'List',
+                    type: 'array',
+                    of: [
+                      {
+                        name: 'accordionItem',
+                        title: 'Accordion item',
+                        type: 'object',
+                        fields: [
+                          {
+                            name: 'title',
+                            title: 'Title',
+                            type: 'string',
+                          },
+                          {
+                            name: 'text',
+                            title: 'Text',
+                            type: 'text',
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+          { type: 'ctaSection' },
             ],
             group: 'content',
             validation: Rule => Rule.required().custom((blocks) => {

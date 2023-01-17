@@ -23,38 +23,20 @@ export default {
               },
             },
             {
-              name: 'dropdownTitle',
-              title: 'Dropdown title',
+              name: 'altTitle',
+              title: 'Display title',
               type: 'string',
-              hidden: ({ parent }) => parent?.page,
-              description: 'Use this field to link to create a dropdown menu.'
-            },
-            {
-              name: "children",
-              title: "Children",
-              hidden: ({ parent }) => (parent?.page || !parent?.dropdownTitle),
-              type: "array",
-              of: [
-                {
-                  type: "reference",
-                  to: [{ type: "page" }],
-                  options: {
-                    filter: 'publishTo == "am" && !(_id in path("drafts.**"))',
-                  },
-                },
-              ],
+              description: 'Use this to override the page title that is shown in the menu.',
             },
           ],
           preview: {
             select: {
               title: "page.title",
-              subtitle: "children",
-              dropdown: "dropdownTitle",
+              alt: "altTitle",
             },
-            prepare({ title, subtitle, dropdown }) {
+            prepare({ title, altTitle }) {
               return {
-                title: title || dropdown,
-                subtitle: subtitle?.length > 0 ? "Has children" : "No children",
+                title: altTitle || title,
               };
             },
           },

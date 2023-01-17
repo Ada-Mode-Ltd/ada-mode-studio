@@ -24,6 +24,8 @@ export default {
                 list: [
                   {title: 'Check', value: 'check'},
                   {title: 'Cross', value: 'cross'},
+                  {title: 'Up symbol', value: 'up'},
+                  {title: 'Down symbol', value: 'down'},
                 ],
                 layout: 'radio',
               }

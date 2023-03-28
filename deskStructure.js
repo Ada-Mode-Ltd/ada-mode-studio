@@ -432,5 +432,5 @@ S.list()
     ),
 
     // The rest of this document is from the original manual grouping in this series of articles
-    ...S.documentTypeListItems().filter(listItem => ![hiddenFromBase, 'service', 'industry', 'product', 'productFeature', 'parentStaff', 'blogPostCategory', 'ctaPage', 'job', 'page', 'post', 'partner', 'quote', 'person', 'wsHomepage', 'wsSettings'].includes(listItem.getId())),
+    ...S.documentTypeListItems().filter(listItem => ![hiddenFromBase, 'service', 'industry', 'product', 'productFeature', 'parentStaff', 'blogPostCategory', 'ctaPage', 'job', 'page', 'post', 'partner', 'quote', 'person', 'wsHomepage', 'wsSettings', 'amHomepage', 'caseStudy', 'amSettings'].includes(listItem.getId())),
   ])

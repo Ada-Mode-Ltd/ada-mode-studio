@@ -5,20 +5,21 @@ import { keyboard, partner, note, briefcase, quote, click, write, person, team, 
 import Iframe from 'sanity-plugin-iframe-pane'
 
 
-const baseUrl = 'https://verdant-cucurucho-b5ae26.netlify.app'
+const wsBaseUrl = 'https://verdant-cucurucho-b5ae26.netlify.app'
+const amBaseUrl = 'https://velvety-salmiakki-87c150.netlify.app'
 
 const resolveProductionUrl = (doc) => {
   return `${baseUrl}/preview/${doc.slug.current}/`
 }
 
-const componentPreview = (doc) => {
-  return `${baseUrl}/preview/${doc._type}/${doc._id}/`
+const componentPreview = (doc, url) => {
+  return `${url}/preview/${doc._type}/${doc._id}/`
 }
 
-const pagePreview = (doc) => {
+const pagePreview = (doc, url) => {
   let type = 'page'
 
-  if (doc._type === 'wsHomepage') {
+  if (doc._type === 'wsHomepage', 'amHomepage') {
     type = 'homepage'
   } else if (doc._type === 'ctaPage') {
     type = 'cta'
@@ -28,11 +29,11 @@ const pagePreview = (doc) => {
     type = 'job'
   }
 
-  return `${baseUrl}/${type}/preview/${doc._id}/`
+  return `${url}/${type}/preview/${doc._id}/`
 }
 
 const componentPreviewTypes = ['person', 'productFeature', 'quote']
-const pagePreviewTypes = ['wsHomepage', 'page', 'ctaPage', 'job', 'post']
+const pagePreviewTypes = ['wsHomepage', 'page', 'ctaPage', 'job', 'post', 'caseStudy', 'amHomepage']
 
 const hiddenFromBase = S.documentTypeListItems().filter(item => item.getId().startsWith('am') || item.getId().startsWith('ws')).map(item => item.getId())
 
@@ -91,19 +92,20 @@ const returnIcon = (schemaType) => {
 
 const siteSpecificSchema = (title, site, schemaType, validationField, orderBy = {field: '_updatedAt', direction: 'desc'}) => {
   const company = site === 'ws' ? 'Windscope' : 'Ada Mode';
+  const baseUrl = site === 'ws' ? wsBaseUrl : amBaseUrl;
   let views = [S.view.form()]
   if (componentPreviewTypes.includes(schemaType)) {
     views.push(S.view
       .component(Iframe)
       .options({
-        url: (doc) => componentPreview(doc),
+        url: (doc) => componentPreview(doc, baseUrl),
       })
       .title('Preview'))
     } else if (pagePreviewTypes.includes(schemaType)) {
       views.push(S.view
         .component(Iframe)
         .options({
-          url: (doc) => pagePreview(doc),
+          url: (doc) => pagePreview(doc, baseUrl),
         })
         .title('Preview'))
     }
@@ -132,20 +134,20 @@ const siteSpecificSchema = (title, site, schemaType, validationField, orderBy = 
 // Filters schema documents based on a reference field
 const siteSpecificSchemaRef = (title, site, schemaType, refSchema, validationField) => {
   const company = site === 'ws' ? 'Windscope' : 'Ada Mode';
-
+  const baseUrl = site === 'ws' ? wsBaseUrl : amBaseUrl;
   let views = [S.view.form()]
   if (componentPreviewTypes.includes(schemaType)) {
     views.push(S.view
       .component(Iframe)
       .options({
-        url: (doc) => componentPreview(doc),
+        url: (doc) => componentPreview(doc, baseUrl),
       })
       .title('Preview'))
     } else if (pagePreviewTypes.includes(schemaType)) {
       views.push(S.view
         .component(Iframe)
         .options({
-          url: (doc) => pagePreview(doc),
+          url: (doc) => pagePreview(doc, baseUrl),
         })
         .title('Preview'))
     }

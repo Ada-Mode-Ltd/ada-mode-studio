@@ -54,7 +54,9 @@ export default {
                         }
                         if (!partners || partners.length === 0) {
                             return 'Required field with at least 1 entry.';
-                            }})
+                            }
+                        return true;
+                    })
               }, 
             ],
             preview: {

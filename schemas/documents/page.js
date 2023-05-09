@@ -208,7 +208,9 @@ export default {
                           }
                           if (!industries || industries.length === 0) {
                               return 'Required field with at least 1 entry.';
-                              }})
+                              }
+                            return true;
+                          })
                   }, 
                 ],
                 preview: {

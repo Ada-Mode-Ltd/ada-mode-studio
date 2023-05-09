@@ -18,6 +18,54 @@ export default {
             }, }],
         },
         {
+            type: 'object',
+            name: 'partners',
+            title: 'Partners',
+            hidden: ({parent}) => parent.publishTo !== 'am',
+            fields: [
+              {
+                name: 'title',
+                title: 'Title',
+                type: 'string',
+                initialValue: 'Partners and customers'
+              },
+              {
+                name: 'showAll',
+                title: 'Show all',
+                type: 'boolean',
+              },
+              {
+                name: 'partners',
+                title: 'Partners',
+                type: 'array',
+                hidden: ({parent}) => parent.showAll,
+                of: [
+                  {
+                    type: 'reference',
+                    to: {type: 'partner'},
+                    title: 'Partner',
+                  }
+                ],
+                validation: Rule => [
+                  Rule.min(1)
+                    .error('Required field with at least 1 entry.'),
+                  Rule.unique()
+                ]
+              }, 
+            ],
+            preview: {
+              select: {
+                title: 'title',
+              },
+              prepare({title}) {
+                return {
+                  title: title || 'Partners',
+                  subtitle: 'Partners',
+                }
+              }
+          },
+        },
+        {
             name: 'smallCaseStudies',
             title: 'Small Case Studies',
             type: 'array',

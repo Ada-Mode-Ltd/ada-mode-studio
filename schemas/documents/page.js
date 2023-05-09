@@ -199,7 +199,7 @@ export default {
                       {
                         type: 'reference',
                         to: {type: 'industry'},
-                        title: 'Industruy',
+                        title: 'Industry',
                       }
                     ],
                     validation: Rule => [

@@ -202,11 +202,13 @@ export default {
                         title: 'Industry',
                       }
                     ],
-                    validation: Rule => [
-                      Rule.min(1)
-                        .error('Required field with at least 1 entry.'),
-                      Rule.unique()
-                    ]
+                    validation: Rule => Rule.custom((industries, context) => {
+                      if (context.parent.showAll) {
+                          return true;
+                          }
+                          if (!industries || industries.length === 0) {
+                              return 'Required field with at least 1 entry.';
+                              }})
                   }, 
                 ],
                 preview: {

@@ -1,3 +1,5 @@
+import { partner } from "../../utils/icons";
+
 export default {
     name: 'amHomepage',
     title: 'Ada Mode homepage',
@@ -21,7 +23,7 @@ export default {
             type: 'object',
             name: 'partners',
             title: 'Partners',
-            hidden: ({parent}) => parent.publishTo !== 'am',
+            // hidden: ({parent}) => parent.publishTo !== 'am',
             fields: [
               {
                 name: 'title',
@@ -46,11 +48,13 @@ export default {
                     title: 'Partner',
                   }
                 ],
-                validation: Rule => [
-                  Rule.min(1)
-                    .error('Required field with at least 1 entry.'),
-                  Rule.unique()
-                ]
+                validation: Rule => Rule.custom((partners, context) => {
+                    if (context.parent.showAll) {
+                        return true;
+                        }
+                        if (!partners || partners.length === 0) {
+                            return 'Required field with at least 1 entry.';
+                            }})
               }, 
             ],
             preview: {
